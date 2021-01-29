@@ -1,0 +1,9 @@
+.card__title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 85.11%;
+  margin-top: 26px;
+  color: #000;
+}
