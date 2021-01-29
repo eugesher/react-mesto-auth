@@ -3,7 +3,7 @@ export const popupContents = {
     editAvatar: "Обновить аватар",
     editProfile: "Редактировать профиль",
     addPlace: "Новое место",
-    confirm: "Вы уверены?"
+    confirm: "Вы уверены?",
   },
   labels: {
     save: "Сохранить",
@@ -15,4 +15,4 @@ export const popupContents = {
     placeName: "Название",
     placeLink: "Ссылка на картинку",
   },
-}
+};

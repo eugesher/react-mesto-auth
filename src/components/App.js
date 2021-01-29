@@ -6,7 +6,7 @@ import ImagePopup from "./ImagePopup";
 import { popupContents } from "../utils/constants";
 
 export default function App() {
-  const {titles, labels, placeholders} = popupContents;
+  const { titles, labels, placeholders } = popupContents;
 
   return (
     <div className="page">
