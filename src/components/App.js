@@ -8,9 +8,9 @@ export default function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header/>
-        <Main/>
-        <Footer/>
+        <Header />
+        <Main />
+        <Footer />
         <PopupWithForm name="editAvatar" title="Обновить аватар" submitButtonTextContent="Сохранить">
           <label className="popup__input-container">
             <input
@@ -21,7 +21,7 @@ export default function App() {
               className="popup__input popup__input_type_avatar-link"
               placeholder="https://somewebsite.com/someimage.jpg"
             />
-            <span className="avatar-link-error popup__input-error"/>
+            <span className="avatar-link-error popup__input-error" />
           </label>
         </PopupWithForm>
         <PopupWithForm name="editProfile" title="Редактировать профиль" submitButtonTextContent="Сохранить">
@@ -35,7 +35,7 @@ export default function App() {
               required
               className="popup__input popup__input_type_profile-name"
             />
-            <span className="user-name-error popup__input-error"/>
+            <span className="user-name-error popup__input-error" />
           </label>
           <label className="popup__input-container">
             <input
@@ -47,7 +47,7 @@ export default function App() {
               required
               className="popup__input popup__input_type_profile-about"
             />
-            <span className="user-about-error popup__input-error"/>
+            <span className="user-about-error popup__input-error" />
           </label>
         </PopupWithForm>
         <PopupWithForm name="addPlace" title="Новое место" submitButtonTextContent="Создать">
@@ -62,7 +62,7 @@ export default function App() {
               className="popup__input popup__input_type_place-name"
               placeholder="Название"
             />
-            <span className="place-name-error popup__input-error"/>
+            <span className="place-name-error popup__input-error" />
           </label>
           <label className="popup__input-container">
             <input
@@ -73,18 +73,17 @@ export default function App() {
               className="popup__input popup__input_type_place-link"
               placeholder="Ссылка на картинку"
             />
-            <span className="place-link-error popup__input-error"/>
+            <span className="place-link-error popup__input-error" />
           </label>
         </PopupWithForm>
-        <PopupWithForm name="removePlace" title="Вы уверены?" submitButtonTextContent="Да"/>
-
+        <PopupWithForm name="removePlace" title="Вы уверены?" submitButtonTextContent="Да" />
 
         <div className="popup popup_type_photo-view">
           <div className="popup__content popup__content_type_image">
-            <img src="#" alt="#" className="popup__image"/>
-            <p className="popup__image-caption"/>
+            <img src="#" alt="#" className="popup__image" />
+            <p className="popup__image-caption" />
             <button type="button" className="popup__close-button">
-              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image"/>
+              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image" />
             </button>
           </div>
         </div>
