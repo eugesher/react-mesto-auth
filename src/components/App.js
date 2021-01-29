@@ -1,45 +1,15 @@
-import headerLogo from "./images/header-logo.svg";
-import avatar from "./images/cousteau.jpg";
-import editButtonIcon from "./images/edit-button.svg";
-import crossButtonIcon from "./images/cross-button.svg";
+import crossButtonIcon from "../images/cross-button.svg";
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
 
-function App() {
+export default function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <header className="header">
-          <img src={headerLogo} alt="Место" className="header__logo"/>
-        </header>
-        <main className="main">
-          <section className="profile">
-            <div className="profile__avatar-container">
-              <img className="profile__avatar" src={avatar} alt="аватар профиля"/>
-              <div className="profile__avatar-overlay">
-                <img
-                  className="profile__avatar-update-icon"
-                  src={editButtonIcon}
-                  alt="изменить аватар"
-                />
-              </div>
-            </div>
-            <div className="profile__info">
-              <h1 className="profile__name">Profile Name</h1>
-              <button type="button" className="profile__edit-button">
-                <img src={editButtonIcon} alt="редактировать профиль"/>
-              </button>
-              <p className="profile__about">Profile about</p>
-            </div>
-            <button type="button" className="profile__add-button">
-              <img src={crossButtonIcon} alt="добавить" className="profile__add-button-image"/>
-            </button>
-          </section>
-          <section className="places">
-            <ul className="places__grid"></ul>
-          </section>
-        </main>
-        <footer className="footer">
-          <p className="footer__copyright">&copy; 2020 Mesto Russia</p>
-        </footer>
+        <Header/>
+        <Main/>
+        <Footer/>
         <div className="popup popup_type_profile-edit">
           <form name="profileEdit" noValidate className="popup__content">
             <h2 className="popup__title">Редактировать профиль</h2>
@@ -148,5 +118,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
