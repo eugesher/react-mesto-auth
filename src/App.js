@@ -1,31 +1,36 @@
+import headerLogo from "./images/header-logo.svg";
+import avatar from "./images/cousteau.jpg";
+import editButtonIcon from "./images/edit-button.svg";
+import crossButtonIcon from "./images/cross-button.svg";
+
 function App() {
   return (
     <div className="page">
       <div className="page__content">
         <header className="header">
-          <img src="<%=require('./images/header-logo.svg')%>" alt="Место" className="header__logo"/>
+          <img src={headerLogo} alt="Место" className="header__logo"/>
         </header>
         <main className="main">
           <section className="profile">
             <div className="profile__avatar-container">
-              <img className="profile__avatar" src="#" alt="аватар профиля"/>
+              <img className="profile__avatar" src={avatar} alt="аватар профиля"/>
               <div className="profile__avatar-overlay">
                 <img
                   className="profile__avatar-update-icon"
-                  src="<%=require('./images/edit-button.svg')%>"
+                  src={editButtonIcon}
                   alt="изменить аватар"
                 />
               </div>
             </div>
             <div className="profile__info">
-              <h1 className="profile__name"></h1>
+              <h1 className="profile__name">Profile Name</h1>
               <button type="button" className="profile__edit-button">
-                <img src="<%=require('./images/edit-button.svg')%>" alt="редактировать профиль"/>
+                <img src={editButtonIcon} alt="редактировать профиль"/>
               </button>
-              <p className="profile__about"></p>
+              <p className="profile__about">Profile about</p>
             </div>
             <button type="button" className="profile__add-button">
-              <img src="<%=require('./images/cross-button.svg')%>" alt="добавить" className="profile__add-button-image"/>
+              <img src={crossButtonIcon} alt="добавить" className="profile__add-button-image"/>
             </button>
           </section>
           <section className="places">
@@ -64,7 +69,7 @@ function App() {
             </label>
             <button type="submit" className="popup__submit-button">Сохранить</button>
             <button type="button" className="popup__close-button">
-              <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" className="popup__close-button-image"/>
+              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image"/>
             </button>
           </form>
         </div>
@@ -97,7 +102,7 @@ function App() {
             </label>
             <button type="submit" className="popup__submit-button">Создать</button>
             <button type="button" className="popup__close-button">
-              <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" className="popup__close-button-image"/>
+              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image"/>
             </button>
           </form>
         </div>
@@ -106,7 +111,7 @@ function App() {
             <img src="#" alt="#" className="popup__image"/>
             <p className="popup__image-caption"></p>
             <button type="button" className="popup__close-button">
-              <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" className="popup__close-button-image"/>
+              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image"/>
             </button>
           </div>
         </div>
@@ -126,7 +131,7 @@ function App() {
             </label>
             <button type="submit" className="popup__submit-button">Сохранить</button>
             <button type="button" className="popup__close-button">
-              <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" className="popup__close-button-image"/>
+              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image"/>
             </button>
           </form>
         </div>
@@ -135,7 +140,7 @@ function App() {
             <h2 className="popup__title">Вы уверены?</h2>
             <button type="submit" className="popup__submit-button popup__submit-button_type_confirm">Да</button>
             <button type="button" className="popup__close-button">
-              <img src="<%=require('./images/cross-button.svg')%>" alt="Закрыть" className="popup__close-button-image"/>
+              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image"/>
             </button>
           </form>
         </div>
