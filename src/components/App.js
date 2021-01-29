@@ -1,8 +1,8 @@
-import crossButtonIcon from "../images/cross-button.svg";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
+import ImagePopup from "./ImagePopup";
 
 export default function App() {
   return (
@@ -77,16 +77,7 @@ export default function App() {
           </label>
         </PopupWithForm>
         <PopupWithForm name="removePlace" title="Вы уверены?" submitButtonTextContent="Да" />
-
-        <div className="popup popup_type_photo-view">
-          <div className="popup__content popup__content_type_image">
-            <img src="#" alt="#" className="popup__image" />
-            <p className="popup__image-caption" />
-            <button type="button" className="popup__close-button">
-              <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image" />
-            </button>
-          </div>
-        </div>
+        <ImagePopup/>
       </div>
     </div>
   );
