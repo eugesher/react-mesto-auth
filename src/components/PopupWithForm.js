@@ -5,6 +5,20 @@ import { handlePopupOverlayClick } from "../utils/utils";
 export default function PopupWithForm(props) {
   const { children, name, title, submitButtonLabel, isOpen, onClose } = props;
 
+  React.useEffect(() => {
+    if (isOpen) {
+      const handleEscapeClose = (event) => {
+        if (event.key === "Escape") {
+          onClose();
+        }
+      };
+      document.addEventListener("keydown", handleEscapeClose);
+      return () => {
+        document.removeEventListener("keydown", handleEscapeClose);
+      };
+    }
+  }, [isOpen, onClose]);
+
   return (
     <div
       className={`popup popup_type_${name} ${isOpen && "popup_opened"}`}
