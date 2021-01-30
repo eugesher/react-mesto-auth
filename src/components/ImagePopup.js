@@ -5,6 +5,7 @@ import { handlePopupOverlayClick } from "../utils/utils";
 export default function ImagePopup(props) {
   const { card, onClose } = props;
   const { name, link } = card;
+  const isOpen = !!Object.keys(card).length
 
   React.useEffect(() => {
     if (isOpen) {
@@ -22,7 +23,7 @@ export default function ImagePopup(props) {
 
   return (
     <div
-      className={`popup popup_type_photo-view ${!!Object.keys(card).length && "popup_opened"}`}
+      className={`popup popup_type_photo-view ${isOpen && "popup_opened"}`}
       onClick={(event) => handlePopupOverlayClick(event, onClose)}
     >
       <div className="popup__content popup__content_type_image">
