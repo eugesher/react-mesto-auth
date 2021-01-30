@@ -3,8 +3,8 @@ import deleteButton from "../images/delete-button.svg";
 import React from "react";
 
 export default function Card(props) {
-  const { source, onClick } = props;
-  const { name, link, likes, owner } = source;
+  const { source, onClick, isUserOwn } = props;
+  const { name, link, likes } = source;
 
   function handleImageClick() {
     const data = { name, link };
@@ -21,7 +21,7 @@ export default function Card(props) {
           <span className="card__like-count">{likes.length}</span>
         </button>
       </div>
-      <button type="button" className="card__delete-button">
+      <button type="button" className="card__delete-button" disabled={!isUserOwn}>
         <img src={deleteButton} alt="Удалить место" />
       </button>
     </li>

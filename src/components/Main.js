@@ -6,6 +6,7 @@ import Card from "./Card";
 
 export default function Main(props) {
   const { onEditAvatar, onEditProfile, onAddPlace, onCardClick } = props;
+  const [userId, setUserId] = React.useState("");
   const [userName, setUserName] = React.useState("");
   const [userAbout, setUserAbout] = React.useState("");
   const [userAvatar, setUserAvatar] = React.useState("");
@@ -15,7 +16,8 @@ export default function Main(props) {
     api
       .getUserInfo()
       .then((data) => {
-        const { name, about, avatar } = data;
+        const { _id, name, about, avatar } = data;
+        setUserId(_id);
         setUserName(name);
         setUserAbout(about);
         setUserAvatar(avatar);
@@ -59,7 +61,14 @@ export default function Main(props) {
       <section className="places">
         <ul className="places__grid">
           {cards.map((cardData) => {
-            return <Card key={cardData._id} source={cardData} onClick={(cardData) => onCardClick(cardData)} />;
+            return (
+              <Card
+                key={cardData._id}
+                source={cardData}
+                onClick={(cardData) => onCardClick(cardData)}
+                isUserOwn={userId === cardData.owner._id}
+              />
+            );
           })}
         </ul>
       </section>
