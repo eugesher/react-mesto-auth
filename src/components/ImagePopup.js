@@ -1,9 +1,24 @@
+import React from "react";
 import crossButtonIcon from "../images/cross-button.svg";
 import { handlePopupOverlayClick } from "../utils/utils";
 
 export default function ImagePopup(props) {
   const { card, onClose } = props;
   const { name, link } = card;
+
+  React.useEffect(() => {
+    if (isOpen) {
+      const handleEscapeClose = (event) => {
+        if (event.key === "Escape") {
+          onClose();
+        }
+      };
+      document.addEventListener("keydown", handleEscapeClose);
+      return () => {
+        document.removeEventListener("keydown", handleEscapeClose);
+      };
+    }
+  }, [isOpen, onClose]);
 
   return (
     <div
