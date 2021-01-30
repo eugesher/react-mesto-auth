@@ -15,8 +15,7 @@ export default function Main(props) {
   React.useEffect(() => {
     api
       .getUserInfo()
-      .then((data) => {
-        const { _id, name, about, avatar } = data;
+      .then(({ _id, name, about, avatar } ) => {
         setUserId(_id);
         setUserName(name);
         setUserAbout(about);
