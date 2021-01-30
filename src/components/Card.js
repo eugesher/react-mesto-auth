@@ -13,7 +13,7 @@ export default function Card(props) {
 
   return (
     <li className="card">
-      <img src={link} alt="#" className="card__image" onClick={handleImageClick} />
+      <img src={link} alt={name} className="card__image" onClick={handleImageClick} />
       <div className="card__title-container">
         <h2 className="card__title">{name}</h2>
         <button type="button" className="card__like-button">
