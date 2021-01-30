@@ -5,7 +5,7 @@ import api from "../utils/api";
 import Card from "./Card";
 
 export default function Main(props) {
-  const { onEditAvatar, onEditProfile, onAddPlace } = props;
+  const { onEditAvatar, onEditProfile, onAddPlace, onCardClick } = props;
   const [userName, setUserName] = React.useState('');
   const [userAbout, setUserAbout] = React.useState('');
   const [userAvatar, setUserAvatar] = React.useState('');
@@ -52,9 +52,9 @@ export default function Main(props) {
       </section>
       <section className="places">
         <ul className="places__grid">
-          {cards.map(card => {
+          {cards.map(cardData => {
             return (
-              <Card key={card._id} source={card}/>
+              <Card key={cardData._id} source={cardData} onClick={(cardData) => onCardClick(cardData)}/>
             )
           })}
         </ul>
