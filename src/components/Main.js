@@ -1,9 +1,8 @@
 import React from "react";
 import editButtonIcon from "../images/edit-button.svg";
 import crossButtonIcon from "../images/cross-button.svg";
-import likeButton from "../images/like-button.svg";
-import deleteButton from "../images/delete-button.svg";
 import api from "../utils/api";
+import Card from "./Card";
 
 export default function Main(props) {
   const { onEditAvatar, onEditProfile, onAddPlace } = props;
@@ -54,21 +53,8 @@ export default function Main(props) {
       <section className="places">
         <ul className="places__grid">
           {cards.map(card => {
-            let { _id, name, link, likes, owner } = card;
             return (
-              <li key={_id} className="card">
-                <img src={link} alt="#" className="card__image"/>
-                <div className="card__title-container">
-                  <h2 className="card__title">{name}</h2>
-                  <button type="button" className="card__like-button">
-                    <img src={likeButton} alt="Нравится"/>
-                    <span className="card__like-count">{likes.length}</span>
-                  </button>
-                </div>
-                <button type="button" className="card__delete-button">
-                  <img src={deleteButton} alt="Удалить место"/>
-                </button>
-              </li>
+              <Card key={card._id} source={card}/>
             )
           })}
         </ul>
