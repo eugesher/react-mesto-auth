@@ -4,7 +4,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import {popupContents} from "../utils/constants";
+import { popupContents } from "../utils/constants";
 
 export default function App() {
   const { titles, labels, placeholders } = popupContents;
@@ -26,7 +26,9 @@ export default function App() {
     setSelectedCard(cardData);
   }
   function closeAllPopups() {
-    [setIsEditAvatarPopupOpen, setIsEditProfilePopupOpen, setIsAddPlacePopupOpen].forEach(setState => setState(false));
+    [setIsEditAvatarPopupOpen, setIsEditProfilePopupOpen, setIsAddPlacePopupOpen].forEach((setState) =>
+      setState(false)
+    );
     setSelectedCard({});
   }
 
@@ -126,7 +128,7 @@ export default function App() {
           </label>
         </PopupWithForm>
         <PopupWithForm name="removePlace" title={titles.confirm} submitButtonLabel={labels.confirm} />
-        <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>
     </div>
   );

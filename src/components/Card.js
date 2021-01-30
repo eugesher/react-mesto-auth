@@ -7,13 +7,13 @@ export default function Card(props) {
   const { name, link, likes, owner } = source;
 
   function handleImageClick() {
-    const data = { name, link }
+    const data = { name, link };
     onClick(data);
   }
 
   return (
     <li className="card">
-      <img src={link} alt="#" className="card__image" onClick={handleImageClick}/>
+      <img src={link} alt="#" className="card__image" onClick={handleImageClick} />
       <div className="card__title-container">
         <h2 className="card__title">{name}</h2>
         <button type="button" className="card__like-button">
@@ -22,8 +22,8 @@ export default function Card(props) {
         </button>
       </div>
       <button type="button" className="card__delete-button">
-        <img src={deleteButton} alt="Удалить место"/>
+        <img src={deleteButton} alt="Удалить место" />
       </button>
     </li>
-  )
+  );
 }
