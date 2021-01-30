@@ -1,20 +1,47 @@
+import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import { popupContents } from "../utils/constants";
+import {popupContents} from "../utils/constants";
 
 export default function App() {
   const { titles, labels, placeholders } = popupContents;
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(true);
+  }
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(true);
+  }
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(true);
+  }
+  function closeAllPopups() {
+    [setIsEditAvatarPopupOpen, setIsEditProfilePopupOpen, setIsAddPlacePopupOpen].forEach(setState => setState(false));
+  }
 
   return (
     <div className="page">
       <div className="page__content">
         <Header />
-        <Main />
+        <Main
+          onEditAvatar={handleEditAvatarClick}
+          onEditProfile={handleEditProfileClick}
+          onAddPlace={handleAddPlaceClick}
+        />
         <Footer />
-        <PopupWithForm name="editAvatar" title={titles.editAvatar} submitButtonLabel={labels.save}>
+        <PopupWithForm
+          name="editAvatar"
+          title={titles.editAvatar}
+          submitButtonLabel={labels.save}
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+        >
           <label className="popup__input-container">
             <input
               id="avatar-link"
@@ -27,7 +54,13 @@ export default function App() {
             <span className="avatar-link-error popup__input-error" />
           </label>
         </PopupWithForm>
-        <PopupWithForm name="editProfile" title={titles.editProfile} submitButtonLabel={labels.save}>
+        <PopupWithForm
+          name="editProfile"
+          title={titles.editProfile}
+          submitButtonLabel={labels.save}
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+        >
           <label className="popup__input-container">
             <input
               id="user-name"
@@ -53,7 +86,13 @@ export default function App() {
             <span className="user-about-error popup__input-error" />
           </label>
         </PopupWithForm>
-        <PopupWithForm name="addPlace" title={titles.addPlace} submitButtonLabel={labels.create}>
+        <PopupWithForm
+          name="addPlace"
+          title={titles.addPlace}
+          submitButtonLabel={labels.create}
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+        >
           <label className="popup__input-container">
             <input
               id="place-name"
