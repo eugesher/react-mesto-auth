@@ -1,32 +1,77 @@
-import avatar from "../images/cousteau.jpg";
+import React from "react";
 import editButtonIcon from "../images/edit-button.svg";
 import crossButtonIcon from "../images/cross-button.svg";
+import likeButton from "../images/like-button.svg";
+import deleteButton from "../images/delete-button.svg";
+import api from "../utils/api";
 
 export default function Main(props) {
   const { onEditAvatar, onEditProfile, onAddPlace } = props;
+  const [userName, setUserName] = React.useState('');
+  const [userAbout, setUserAbout] = React.useState('');
+  const [userAvatar, setUserAvatar] = React.useState('');
+  const [cards, setCards] = React.useState([]);
+
+  React.useEffect(() => {
+    api.getUserInfo().then(data => {
+      const {name, about, avatar} = data;
+      setUserName(name);
+      setUserAbout(about);
+      setUserAvatar(avatar);
+    }).catch(e => {
+      console.log(e);
+    })
+  }, [])
+
+  React.useEffect(() => {
+    api.getInitialCards().then(data => {
+      setCards(data);
+    }).catch(e => {
+      console.log(e);
+    })
+  })
 
   return (
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-container" onClick={onEditAvatar}>
-          <img className="profile__avatar" src={avatar} alt="аватар профиля" />
+          <img className="profile__avatar" src={userAvatar} alt="аватар профиля" />
           <div className="profile__avatar-overlay">
             <img className="profile__avatar-update-icon" src={editButtonIcon} alt="изменить аватар" />
           </div>
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">Profile Name</h1>
+          <h1 className="profile__name">{userName}</h1>
           <button type="button" className="profile__edit-button" onClick={onEditProfile}>
             <img src={editButtonIcon} alt="редактировать профиль" />
           </button>
-          <p className="profile__about">Profile about</p>
+          <p className="profile__about">{userAbout}</p>
         </div>
         <button type="button" className="profile__add-button" onClick={onAddPlace}>
           <img src={crossButtonIcon} alt="добавить" className="profile__add-button-image" />
         </button>
       </section>
       <section className="places">
-        <ul className="places__grid" />
+        <ul className="places__grid">
+          {cards.map(card => {
+            let { _id, name, link, likes, owner } = card;
+            return (
+              <li key={_id} className="card">
+                <img src={link} alt="#" className="card__image"/>
+                <div className="card__title-container">
+                  <h2 className="card__title">{name}</h2>
+                  <button type="button" className="card__like-button">
+                    <img src={likeButton} alt="Нравится"/>
+                    <span className="card__like-count">{likes.length}</span>
+                  </button>
+                </div>
+                <button type="button" className="card__delete-button">
+                  <img src={deleteButton} alt="Удалить место"/>
+                </button>
+              </li>
+            )
+          })}
+        </ul>
       </section>
     </main>
   );
