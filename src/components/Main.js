@@ -6,29 +6,35 @@ import Card from "./Card";
 
 export default function Main(props) {
   const { onEditAvatar, onEditProfile, onAddPlace, onCardClick } = props;
-  const [userName, setUserName] = React.useState('');
-  const [userAbout, setUserAbout] = React.useState('');
-  const [userAvatar, setUserAvatar] = React.useState('');
+  const [userName, setUserName] = React.useState("");
+  const [userAbout, setUserAbout] = React.useState("");
+  const [userAvatar, setUserAvatar] = React.useState("");
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getUserInfo().then(data => {
-      const {name, about, avatar} = data;
-      setUserName(name);
-      setUserAbout(about);
-      setUserAvatar(avatar);
-    }).catch(e => {
-      console.log(e);
-    })
-  }, [])
+    api
+      .getUserInfo()
+      .then((data) => {
+        const { name, about, avatar } = data;
+        setUserName(name);
+        setUserAbout(about);
+        setUserAvatar(avatar);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
   React.useEffect(() => {
-    api.getInitialCards().then(data => {
-      setCards(data);
-    }).catch(e => {
-      console.log(e);
-    })
-  })
+    api
+      .getInitialCards()
+      .then((data) => {
+        setCards(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
 
   return (
     <main className="main">
@@ -52,10 +58,8 @@ export default function Main(props) {
       </section>
       <section className="places">
         <ul className="places__grid">
-          {cards.map(cardData => {
-            return (
-              <Card key={cardData._id} source={cardData} onClick={(cardData) => onCardClick(cardData)}/>
-            )
+          {cards.map((cardData) => {
+            return <Card key={cardData._id} source={cardData} onClick={(cardData) => onCardClick(cardData)} />;
           })}
         </ul>
       </section>
