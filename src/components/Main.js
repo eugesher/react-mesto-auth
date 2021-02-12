@@ -32,6 +32,18 @@ export default function Main({
       });
   }
 
+  function handleCardDelete(card) {
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        const newCards = cards.filter((c) => c._id !== card._id);
+        setCards(newCards);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   React.useEffect(() => {
     api
       .getInitialCards()
@@ -92,6 +104,7 @@ export default function Main({
                 source={cardData}
                 onClick={(cardData) => onCardClick(cardData)}
                 onCardLike={handleCardLike}
+                onCardDelete={handleCardDelete}
               />
             );
           })}

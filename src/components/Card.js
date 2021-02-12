@@ -4,7 +4,7 @@ import deleteButton from "../images/trash.svg";
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function Card({ source, onClick, onCardLike }) {
+export default function Card({ source, onClick, onCardLike, onCardDelete }) {
   const { name, link, likes } = source;
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = currentUser._id === source.owner._id;
@@ -17,6 +17,10 @@ export default function Card({ source, onClick, onCardLike }) {
 
   function handleLikeClick() {
     onCardLike(source);
+  }
+
+  function handleDeleteClick() {
+    onCardDelete(source);
   }
 
   return (
@@ -38,7 +42,12 @@ export default function Card({ source, onClick, onCardLike }) {
           <span className="card__like-count">{likes.length}</span>
         </button>
       </div>
-      <button type="button" className="card__delete-button" disabled={!isOwn}>
+      <button
+        type="button"
+        className="card__delete-button"
+        disabled={!isOwn}
+        onClick={handleDeleteClick}
+      >
         <img src={deleteButton} alt="Удалить место" />
       </button>
     </li>
