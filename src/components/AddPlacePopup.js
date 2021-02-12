@@ -1,9 +1,12 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import { popupContents } from "../utils/constants";
 
-export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  const { titles, labels, placeholders } = popupContents;
+export default function AddPlacePopup({
+  isOpen,
+  onClose,
+  onAddPlace,
+  content,
+}) {
   const nameInput = React.useRef();
   const linkInput = React.useRef();
 
@@ -25,8 +28,8 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   return (
     <PopupWithForm
       name="addPlace"
-      title={titles.addPlace}
-      submitButtonLabel={labels.create}
+      title={content.title}
+      submitButtonLabel={content.submitLabel}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -41,7 +44,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           maxLength="30"
           required
           className="popup__input popup__input_type_place-name"
-          placeholder={placeholders.placeName}
+          placeholder={content.namePlaceholder}
         />
         <span className="place-name-error popup__input-error" />
       </label>
@@ -53,7 +56,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           type="url"
           required
           className="popup__input popup__input_type_place-link"
-          placeholder={placeholders.placeLink}
+          placeholder={content.linkPlaceholder}
         />
         <span className="place-link-error popup__input-error" />
       </label>

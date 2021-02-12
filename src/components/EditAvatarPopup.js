@@ -1,9 +1,12 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
-import { popupContents } from "../utils/constants";
 
-export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
-  const { titles, labels, placeholders } = popupContents;
+export default function EditAvatarPopup({
+  isOpen,
+  onClose,
+  onUpdateAvatar,
+  content,
+}) {
   const linkInput = React.useRef();
 
   function handleSubmit(event) {
@@ -18,8 +21,8 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   return (
     <PopupWithForm
       name="editAvatar"
-      title={titles.editAvatar}
-      submitButtonLabel={labels.save}
+      title={content.title}
+      submitButtonLabel={content.submitLabel}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -32,7 +35,7 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
           type="url"
           required
           className="popup__input popup__input_type_avatar-link"
-          placeholder={placeholders.avatarLink}
+          placeholder={content.placeholder}
         />
         <span className="avatar-link-error popup__input-error" />
       </label>

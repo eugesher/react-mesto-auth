@@ -1,20 +1,17 @@
 export const popupContents = {
-  titles: {
-    editAvatar: "Обновить аватар",
-    editProfile: "Редактировать профиль",
-    addPlace: "Новое место",
-    confirm: "Вы уверены?",
+  editProfile: {
+    title: "Редактировать профиль",
+    submitLabel: "Сохранить",
   },
-  labels: {
-    save: "Сохранить",
-    create: "Создать",
-    confirm: "Да",
+  editAvatar: {
+    title: "Обновить аватар",
+    placeholder: "https://somewebsite.com/someimage.jpg",
+    submitLabel: "Сохранить",
   },
-  placeholders: {
-    avatarLink: "https://somewebsite.com/someimage.jpg",
-    placeName: "Название",
-    placeLink: "Ссылка на картинку",
+  addPlace: {
+    title: "Новое место",
+    namePlaceholder: "Название",
+    linkPlaceholder: "Ссылка на картинку",
+    submitLabel: "Создать",
   },
 };
-
-// todo: refactor
