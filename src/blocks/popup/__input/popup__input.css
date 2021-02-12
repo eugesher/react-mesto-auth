@@ -15,7 +15,3 @@
 .popup__input:focus {
   outline: none;
 }
-
-.popup__input::placeholder {
-  color: rgba(0, 0, 0, 0.2);
-}

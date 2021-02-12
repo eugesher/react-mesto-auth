@@ -8,6 +8,7 @@ import { popupContents } from "../utils/constants";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 export default function App() {
   const { titles, labels, placeholders } = popupContents;
@@ -44,8 +45,19 @@ export default function App() {
   function handleUpdateUser(values) {
     api
       .patchUserInfo(values)
-      .then(({ name, about, avatar }) => {
-        setCurrentUser({ name, about, avatar });
+      .then((data) => {
+        setCurrentUser(data);
+        closeAllPopups();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  function handleUpdateAvatar(link) {
+    api
+      .patchUserAvatar(link)
+      .then((data) => {
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch((e) => {
@@ -72,25 +84,11 @@ export default function App() {
             onCardClick={(imageLink) => handleCardClick(imageLink)}
           />
           <Footer />
-          <PopupWithForm
-            name="editAvatar"
-            title={titles.editAvatar}
-            submitButtonLabel={labels.save}
+          <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
-          >
-            <label className="popup__input-container">
-              <input
-                id="avatar-link"
-                name="avatar"
-                type="url"
-                required
-                className="popup__input popup__input_type_avatar-link"
-                placeholder={placeholders.avatarLink}
-              />
-              <span className="avatar-link-error popup__input-error" />
-            </label>
-          </PopupWithForm>
+            onUpdateAvatar={handleUpdateAvatar}
+          />
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
