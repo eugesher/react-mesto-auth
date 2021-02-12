@@ -1,11 +1,11 @@
 import React from "react";
-import crossButtonIcon from "../images/cross-button.svg";
+import crossButtonIcon from "../images/cross.svg";
 import { handlePopupOverlayClick } from "../utils/utils";
 
 export default function ImagePopup(props) {
   const { card, onClose } = props;
   const { name, link } = card;
-  const isOpen = !!Object.keys(card).length
+  const isOpen = !!Object.keys(card).length;
 
   React.useEffect(() => {
     if (isOpen) {
@@ -30,7 +30,11 @@ export default function ImagePopup(props) {
         <img src={link} alt={name} className="popup__image" />
         <p className="popup__image-caption">{name}</p>
         <button type="button" className="popup__close-button" onClick={onClose}>
-          <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image" />
+          <img
+            src={crossButtonIcon}
+            alt="Закрыть"
+            className="popup__close-button-image"
+          />
         </button>
       </div>
     </div>

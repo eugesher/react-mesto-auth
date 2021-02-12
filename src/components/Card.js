@@ -1,6 +1,6 @@
-import likeButton from "../images/like-button.svg";
-import likeButtonSolid from "../images/like-button-active.svg";
-import deleteButton from "../images/delete-button.svg";
+import likeIcon from "../images/heart.svg";
+import likeIconSolid from "../images/heart-solid.svg";
+import deleteButton from "../images/trash.svg";
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
@@ -26,7 +26,7 @@ export default function Card({ source, onClick }) {
       <div className="card__title-container">
         <h2 className="card__title">{name}</h2>
         <button type="button" className="card__like-button">
-          <img src={isLiked ? likeButtonSolid : likeButton} alt="Нравится" />
+          <img src={isLiked ? likeIconSolid : likeIcon} alt="Нравится" />
           <span className="card__like-count">{likes.length}</span>
         </button>
       </div>

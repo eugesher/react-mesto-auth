@@ -1,6 +1,6 @@
 import React from "react";
-import editButtonIcon from "../images/edit-button.svg";
-import crossButtonIcon from "../images/cross-button.svg";
+import editButtonIcon from "../images/pencil.svg";
+import crossButtonIcon from "../images/cross.svg";
 import api from "../utils/api";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";

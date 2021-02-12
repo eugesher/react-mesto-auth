@@ -1,5 +1,5 @@
 import React from "react";
-import crossButtonIcon from "../images/cross-button.svg";
+import crossButtonIcon from "../images/cross.svg";
 import { handlePopupOverlayClick } from "../utils/utils";
 
 export default function PopupWithForm(props) {
@@ -31,7 +31,11 @@ export default function PopupWithForm(props) {
           {submitButtonLabel}
         </button>
         <button type="button" className="popup__close-button" onClick={onClose}>
-          <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image" />
+          <img
+            src={crossButtonIcon}
+            alt="Закрыть"
+            className="popup__close-button-image"
+          />
         </button>
       </form>
     </div>
