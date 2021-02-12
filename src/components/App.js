@@ -66,9 +66,14 @@ export default function App() {
   }
 
   React.useEffect(() => {
-    api.getUserInfo().then((data) => {
-      setCurrentUser(data);
-    });
+    api
+      .getUserInfo()
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }, []);
 
   return (
