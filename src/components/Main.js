@@ -1,7 +1,6 @@
 import React from "react";
 import editButtonIcon from "../images/pencil.svg";
 import crossButtonIcon from "../images/cross.svg";
-import api from "../utils/api";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
@@ -10,50 +9,11 @@ export default function Main({
   onEditProfile,
   onAddPlace,
   onCardClick,
+  onCardLike,
+  onCardDelete,
+  cards,
 }) {
-  const [cards, setCards] = React.useState([]);
   const currentUser = React.useContext(CurrentUserContext);
-
-  function handleCardLike(card) {
-    function changeLikeCardStatus() {
-      const isLiked = card.likes.some((l) => l._id === currentUser._id);
-      return isLiked ? api.deleteCardLike(card._id) : api.putCardLike(card._id);
-    }
-
-    changeLikeCardStatus()
-      .then((targetCard) => {
-        const newCards = cards.map((c) =>
-          c._id === card._id ? targetCard : c
-        );
-        setCards(newCards);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-
-  function handleCardDelete(card) {
-    api
-      .deleteCard(card._id)
-      .then(() => {
-        const newCards = cards.filter((c) => c._id !== card._id);
-        setCards(newCards);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-
-  React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
 
   return (
     <main className="main">
@@ -103,8 +63,8 @@ export default function Main({
                 key={cardData._id}
                 source={cardData}
                 onClick={(cardData) => onCardClick(cardData)}
-                onCardLike={handleCardLike}
-                onCardDelete={handleCardDelete}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
               />
             );
           })}
