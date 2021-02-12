@@ -11,7 +11,6 @@ export default function Main({
   onAddPlace,
   onCardClick,
 }) {
-  const [userId, setUserId] = React.useState("");
   const [cards, setCards] = React.useState([]);
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -74,7 +73,6 @@ export default function Main({
                 key={cardData._id}
                 source={cardData}
                 onClick={(cardData) => onCardClick(cardData)}
-                isUserOwn={userId === cardData.owner._id}
               />
             );
           })}
