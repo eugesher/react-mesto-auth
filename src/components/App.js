@@ -2,16 +2,14 @@ import React from "react";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import { popupContents } from "../utils/constants";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
 
 export default function App() {
-  const { titles, labels, placeholders } = popupContents;
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
     false
   );
@@ -26,15 +24,19 @@ export default function App() {
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
+
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
+
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
+
   function handleCardClick(cardData) {
     setSelectedCard(cardData);
   }
+
   function closeAllPopups() {
     [
       setIsEditAvatarPopupOpen,
@@ -43,6 +45,7 @@ export default function App() {
     ].forEach((setState) => setState(false));
     setSelectedCard({});
   }
+
   function handleUpdateUser(values) {
     api
       .patchUserInfo(values)
@@ -54,6 +57,7 @@ export default function App() {
         console.log(e);
       });
   }
+
   function handleUpdateAvatar(link) {
     api
       .patchUserAvatar(link)
@@ -65,6 +69,19 @@ export default function App() {
         console.log(e);
       });
   }
+
+  function handleAddPlace(values) {
+    api
+      .postCard(values)
+      .then((data) => {
+        setCards([data, ...cards]);
+        closeAllPopups();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   function handleCardLike(card) {
     function changeLikeCardStatus() {
       const isLiked = card.likes.some((l) => l._id === currentUser._id);
@@ -143,42 +160,10 @@ export default function App() {
             onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
           />
-          <PopupWithForm
-            name="addPlace"
-            title={titles.addPlace}
-            submitButtonLabel={labels.create}
+          <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
-          >
-            <label className="popup__input-container">
-              <input
-                id="place-name"
-                name="name"
-                type="text"
-                minLength="2"
-                maxLength="30"
-                required
-                className="popup__input popup__input_type_place-name"
-                placeholder={placeholders.placeName}
-              />
-              <span className="place-name-error popup__input-error" />
-            </label>
-            <label className="popup__input-container">
-              <input
-                id="place-link"
-                name="link"
-                type="url"
-                required
-                className="popup__input popup__input_type_place-link"
-                placeholder={placeholders.placeLink}
-              />
-              <span className="place-link-error popup__input-error" />
-            </label>
-          </PopupWithForm>
-          <PopupWithForm
-            name="removePlace"
-            title={titles.confirm}
-            submitButtonLabel={labels.confirm}
+            onAddPlace={handleAddPlace}
           />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         </div>
