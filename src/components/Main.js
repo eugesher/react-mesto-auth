@@ -14,6 +14,24 @@ export default function Main({
   const [cards, setCards] = React.useState([]);
   const currentUser = React.useContext(CurrentUserContext);
 
+  function handleCardLike(card) {
+    function changeLikeCardStatus() {
+      const isLiked = card.likes.some((l) => l._id === currentUser._id);
+      return isLiked ? api.deleteCardLike(card._id) : api.putCardLike(card._id);
+    }
+
+    changeLikeCardStatus()
+      .then((targetCard) => {
+        const newCards = cards.map((c) =>
+          c._id === card._id ? targetCard : c
+        );
+        setCards(newCards);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   React.useEffect(() => {
     api
       .getInitialCards()
@@ -73,6 +91,7 @@ export default function Main({
                 key={cardData._id}
                 source={cardData}
                 onClick={(cardData) => onCardClick(cardData)}
+                onCardLike={handleCardLike}
               />
             );
           })}
