@@ -1,4 +1,5 @@
 import likeButton from "../images/like-button.svg";
+import likeButtonSolid from "../images/like-button-active.svg";
 import deleteButton from "../images/delete-button.svg";
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
@@ -7,6 +8,7 @@ export default function Card({ source, onClick }) {
   const { name, link, likes } = source;
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = currentUser._id === source.owner._id;
+  const isLiked = likes.some((like) => like._id === currentUser._id);
 
   function handleImageClick() {
     const data = { name, link };
@@ -24,7 +26,7 @@ export default function Card({ source, onClick }) {
       <div className="card__title-container">
         <h2 className="card__title">{name}</h2>
         <button type="button" className="card__like-button">
-          <img src={likeButton} alt="Нравится" />
+          <img src={isLiked ? likeButtonSolid : likeButton} alt="Нравится" />
           <span className="card__like-count">{likes.length}</span>
         </button>
       </div>
