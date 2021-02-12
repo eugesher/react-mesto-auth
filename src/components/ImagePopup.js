@@ -2,8 +2,7 @@ import React from "react";
 import crossButtonIcon from "../images/cross.svg";
 import { handlePopupOverlayClick } from "../utils/utils";
 
-export default function ImagePopup(props) {
-  const { card, onClose } = props;
+export default function ImagePopup({ card, onClose }) {
   const { name, link } = card;
   const isOpen = !!Object.keys(card).length;
 
