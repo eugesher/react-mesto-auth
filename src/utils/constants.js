@@ -16,3 +16,5 @@ export const popupContents = {
     placeLink: "Ссылка на картинку",
   },
 };
+
+// todo: refactor

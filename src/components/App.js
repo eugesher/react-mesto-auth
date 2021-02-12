@@ -7,6 +7,7 @@ import ImagePopup from "./ImagePopup";
 import { popupContents } from "../utils/constants";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import EditProfilePopup from "./EditProfilePopup";
 
 export default function App() {
   const { titles, labels, placeholders } = popupContents;
@@ -39,6 +40,17 @@ export default function App() {
       setIsAddPlacePopupOpen,
     ].forEach((setState) => setState(false));
     setSelectedCard({});
+  }
+  function handleUpdateUser(values) {
+    api
+      .patchUserInfo(values)
+      .then(({ name, about, avatar }) => {
+        setCurrentUser({ name, about, avatar });
+        closeAllPopups();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   React.useEffect(() => {
@@ -79,38 +91,11 @@ export default function App() {
               <span className="avatar-link-error popup__input-error" />
             </label>
           </PopupWithForm>
-          <PopupWithForm
-            name="editProfile"
-            title={titles.editProfile}
-            submitButtonLabel={labels.save}
+          <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
-          >
-            <label className="popup__input-container">
-              <input
-                id="user-name"
-                name="name"
-                type="text"
-                minLength="2"
-                maxLength="40"
-                required
-                className="popup__input popup__input_type_profile-name"
-              />
-              <span className="user-name-error popup__input-error" />
-            </label>
-            <label className="popup__input-container">
-              <input
-                id="user-about"
-                name="about"
-                type="text"
-                minLength="2"
-                maxLength="200"
-                required
-                className="popup__input popup__input_type_profile-about"
-              />
-              <span className="user-about-error popup__input-error" />
-            </label>
-          </PopupWithForm>
+            onUpdateUser={handleUpdateUser}
+          />
           <PopupWithForm
             name="addPlace"
             title={titles.addPlace}
