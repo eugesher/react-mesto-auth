@@ -3,28 +3,17 @@ import editButtonIcon from "../images/edit-button.svg";
 import crossButtonIcon from "../images/cross-button.svg";
 import api from "../utils/api";
 import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function Main(props) {
-  const { onEditAvatar, onEditProfile, onAddPlace, onCardClick } = props;
+export default function Main({
+  onEditAvatar,
+  onEditProfile,
+  onAddPlace,
+  onCardClick,
+}) {
   const [userId, setUserId] = React.useState("");
-  const [userName, setUserName] = React.useState("");
-  const [userAbout, setUserAbout] = React.useState("");
-  const [userAvatar, setUserAvatar] = React.useState("");
   const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api
-      .getUserInfo()
-      .then(({ _id, name, about, avatar } ) => {
-        setUserId(_id);
-        setUserName(name);
-        setUserAbout(about);
-        setUserAvatar(avatar);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
+  const currentUser = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
     api
@@ -41,20 +30,40 @@ export default function Main(props) {
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-container" onClick={onEditAvatar}>
-          <img className="profile__avatar" src={userAvatar} alt="аватар профиля" />
+          <img
+            className="profile__avatar"
+            src={currentUser.avatar}
+            alt="аватар профиля"
+          />
           <div className="profile__avatar-overlay">
-            <img className="profile__avatar-update-icon" src={editButtonIcon} alt="изменить аватар" />
+            <img
+              className="profile__avatar-update-icon"
+              src={editButtonIcon}
+              alt="изменить аватар"
+            />
           </div>
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">{userName}</h1>
-          <button type="button" className="profile__edit-button" onClick={onEditProfile}>
+          <h1 className="profile__name">{currentUser.name}</h1>
+          <button
+            type="button"
+            className="profile__edit-button"
+            onClick={onEditProfile}
+          >
             <img src={editButtonIcon} alt="редактировать профиль" />
           </button>
-          <p className="profile__about">{userAbout}</p>
+          <p className="profile__about">{currentUser.about}</p>
         </div>
-        <button type="button" className="profile__add-button" onClick={onAddPlace}>
-          <img src={crossButtonIcon} alt="добавить" className="profile__add-button-image" />
+        <button
+          type="button"
+          className="profile__add-button"
+          onClick={onAddPlace}
+        >
+          <img
+            src={crossButtonIcon}
+            alt="добавить"
+            className="profile__add-button-image"
+          />
         </button>
       </section>
       <section className="places">
