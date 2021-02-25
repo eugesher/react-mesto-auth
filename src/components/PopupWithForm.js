@@ -2,6 +2,7 @@ import React from "react";
 import crossButtonIcon from "../images/cross.svg";
 import { handlePopupOverlayClick } from "../utils/utils";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 export default function PopupWithForm({ children, name, title, submitButtonLabel, isOpen, onClose, onSubmit }) {
   PopupWithForm.propTypes = {
@@ -30,7 +31,7 @@ export default function PopupWithForm({ children, name, title, submitButtonLabel
 
   return (
     <div
-      className={`popup popup_type_${name} ${isOpen && "popup_opened"}`}
+      className={classNames("popup", `popup_type_${name}`, { popup_opened: isOpen })}
       onClick={(event) => handlePopupOverlayClick(event, onClose)}
     >
       <form name={name} noValidate className="popup__content" onSubmit={onSubmit}>
