@@ -1,8 +1,16 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import PropTypes from "prop-types";
 
 export default function EditProfilePopup({ isOpen, onClose, onUpdateUser, content }) {
+  EditProfilePopup.propTypes = {
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.func,
+    onUpdateUser: PropTypes.func,
+    content: PropTypes.object,
+  };
+
   const currentUser = React.useContext(CurrentUserContext);
   const [formValues, setFormValues] = React.useState({});
 

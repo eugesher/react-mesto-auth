@@ -1,8 +1,19 @@
 import React from "react";
 import crossButtonIcon from "../images/cross.svg";
 import { handlePopupOverlayClick } from "../utils/utils";
+import PropTypes from "prop-types";
 
 export default function PopupWithForm({ children, name, title, submitButtonLabel, isOpen, onClose, onSubmit }) {
+  PopupWithForm.propTypes = {
+    children: PropTypes.node,
+    name: PropTypes.string,
+    title: PropTypes.string,
+    submitButtonLabel: PropTypes.string,
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.func,
+    onSubmit: PropTypes.func,
+  };
+
   React.useEffect(() => {
     if (isOpen) {
       const handleEscapeClose = (event) => {

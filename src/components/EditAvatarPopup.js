@@ -1,7 +1,15 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import PropTypes from "prop-types";
 
 export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, content }) {
+  EditAvatarPopup.propTypes = {
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.func,
+    onUpdateAvatar: PropTypes.func,
+    content: PropTypes.object,
+  };
+
   const linkInput = React.useRef();
 
   function handleSubmit(event) {

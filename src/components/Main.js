@@ -3,6 +3,7 @@ import editButtonIcon from "../images/pencil.svg";
 import crossButtonIcon from "../images/cross.svg";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import PropTypes from "prop-types";
 
 export default function Main({
   onEditAvatar,
@@ -13,6 +14,16 @@ export default function Main({
   onCardDelete,
   cards,
 }) {
+  Main.propTypes = {
+    onEditAvatar: PropTypes.func,
+    onEditProfile: PropTypes.func,
+    onAddPlace: PropTypes.func,
+    onCardClick: PropTypes.func,
+    onCardLike: PropTypes.func,
+    onCardDelete: PropTypes.func,
+    cards: PropTypes.array,
+  };
+
   const currentUser = React.useContext(CurrentUserContext);
 
   return (

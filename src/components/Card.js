@@ -3,8 +3,16 @@ import likeIconSolid from "../images/heart-solid.svg";
 import deleteButton from "../images/trash.svg";
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import PropTypes from "prop-types";
 
 export default function Card({ source, onClick, onCardLike, onCardDelete }) {
+  Card.propTypes = {
+    source: PropTypes.object,
+    onClick: PropTypes.func,
+    onCardLike: PropTypes.func,
+    onCardDelete: PropTypes.func,
+  };
+
   const { name, link, likes } = source;
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = currentUser._id === source.owner._id;

@@ -1,7 +1,15 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import PropTypes from "prop-types";
 
 export default function AddPlacePopup({ isOpen, onClose, onAddPlace, content }) {
+  AddPlacePopup.propTypes = {
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.func,
+    onAddPlace: PropTypes.func,
+    content: PropTypes.object,
+  };
+
   const nameInput = React.useRef();
   const linkInput = React.useRef();
 
