@@ -1,12 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-export default function EditAvatarPopup({
-  isOpen,
-  onClose,
-  onUpdateAvatar,
-  content,
-}) {
+export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, content }) {
   const linkInput = React.useRef();
 
   function handleSubmit(event) {

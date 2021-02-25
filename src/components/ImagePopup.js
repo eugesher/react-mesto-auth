@@ -29,11 +29,7 @@ export default function ImagePopup({ card, onClose }) {
         <img src={link} alt={name} className="popup__image" />
         <p className="popup__image-caption">{name}</p>
         <button type="button" className="popup__close-button" onClick={onClose}>
-          <img
-            src={crossButtonIcon}
-            alt="Закрыть"
-            className="popup__close-button-image"
-          />
+          <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image" />
         </button>
       </div>
     </div>

@@ -11,12 +11,8 @@ import AddPlacePopup from "./AddPlacePopup";
 import { popupContents } from "../utils/constants";
 
 export default function App() {
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(
-    false
-  );
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(
-    false
-  );
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
@@ -39,11 +35,9 @@ export default function App() {
   }
 
   function closeAllPopups() {
-    [
-      setIsEditAvatarPopupOpen,
-      setIsEditProfilePopupOpen,
-      setIsAddPlacePopupOpen,
-    ].forEach((setState) => setState(false));
+    [setIsEditAvatarPopupOpen, setIsEditProfilePopupOpen, setIsAddPlacePopupOpen].forEach((setState) =>
+      setState(false)
+    );
     setSelectedCard({});
   }
 
@@ -91,9 +85,7 @@ export default function App() {
 
     changeLikeCardStatus()
       .then((targetCard) => {
-        const newCards = cards.map((c) =>
-          c._id === card._id ? targetCard : c
-        );
+        const newCards = cards.map((c) => (c._id === card._id ? targetCard : c));
         setCards(newCards);
       })
       .catch((e) => {

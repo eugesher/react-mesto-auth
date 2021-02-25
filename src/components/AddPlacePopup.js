@@ -1,12 +1,7 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
-export default function AddPlacePopup({
-  isOpen,
-  onClose,
-  onAddPlace,
-  content,
-}) {
+export default function AddPlacePopup({ isOpen, onClose, onAddPlace, content }) {
   const nameInput = React.useRef();
   const linkInput = React.useRef();
 

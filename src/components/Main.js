@@ -19,40 +19,20 @@ export default function Main({
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-container" onClick={onEditAvatar}>
-          <img
-            className="profile__avatar"
-            src={currentUser.avatar}
-            alt="аватар профиля"
-          />
+          <img className="profile__avatar" src={currentUser.avatar} alt="аватар профиля" />
           <div className="profile__avatar-overlay">
-            <img
-              className="profile__avatar-update-icon"
-              src={editButtonIcon}
-              alt="изменить аватар"
-            />
+            <img className="profile__avatar-update-icon" src={editButtonIcon} alt="изменить аватар" />
           </div>
         </div>
         <div className="profile__info">
           <h1 className="profile__name">{currentUser.name}</h1>
-          <button
-            type="button"
-            className="profile__edit-button"
-            onClick={onEditProfile}
-          >
+          <button type="button" className="profile__edit-button" onClick={onEditProfile}>
             <img src={editButtonIcon} alt="редактировать профиль" />
           </button>
           <p className="profile__about">{currentUser.about}</p>
         </div>
-        <button
-          type="button"
-          className="profile__add-button"
-          onClick={onAddPlace}
-        >
-          <img
-            src={crossButtonIcon}
-            alt="добавить"
-            className="profile__add-button-image"
-          />
+        <button type="button" className="profile__add-button" onClick={onAddPlace}>
+          <img src={crossButtonIcon} alt="добавить" className="profile__add-button-image" />
         </button>
       </section>
       <section className="places">

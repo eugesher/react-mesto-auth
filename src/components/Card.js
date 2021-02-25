@@ -25,29 +25,15 @@ export default function Card({ source, onClick, onCardLike, onCardDelete }) {
 
   return (
     <li className="card">
-      <img
-        src={link}
-        alt={name}
-        className="card__image"
-        onClick={handleImageClick}
-      />
+      <img src={link} alt={name} className="card__image" onClick={handleImageClick} />
       <div className="card__title-container">
         <h2 className="card__title">{name}</h2>
-        <button
-          type="button"
-          className="card__like-button"
-          onClick={handleLikeClick}
-        >
+        <button type="button" className="card__like-button" onClick={handleLikeClick}>
           <img src={isLiked ? likeIconSolid : likeIcon} alt="Нравится" />
           <span className="card__like-count">{likes.length}</span>
         </button>
       </div>
-      <button
-        type="button"
-        className="card__delete-button"
-        disabled={!isOwn}
-        onClick={handleDeleteClick}
-      >
+      <button type="button" className="card__delete-button" disabled={!isOwn} onClick={handleDeleteClick}>
         <img src={deleteButton} alt="Удалить место" />
       </button>
     </li>
