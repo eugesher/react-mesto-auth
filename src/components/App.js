@@ -49,7 +49,7 @@ export default function App() {
         closeAllPopups();
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
@@ -61,7 +61,7 @@ export default function App() {
         closeAllPopups();
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
@@ -73,7 +73,7 @@ export default function App() {
         closeAllPopups();
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
@@ -89,7 +89,7 @@ export default function App() {
         setCards(newCards);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
@@ -101,7 +101,7 @@ export default function App() {
         setCards(newCards);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }
 
@@ -112,7 +112,7 @@ export default function App() {
         setCurrentUser(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }, []);
 
@@ -123,7 +123,7 @@ export default function App() {
         setCards(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.error(e);
       });
   }, []);
 
