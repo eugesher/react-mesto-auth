@@ -1,6 +1,7 @@
 @import url("./vendor/normalize.css");
 @import url("./vendor/fonts/fonts.css");
 @import url("./blocks/page/page.css");
+@import url("blocks/page/_state/page_state_unsigned.css");
 @import url("./blocks/page/__content/page__content.css");
 @import url("./blocks/header/header.css");
 @import url("./blocks/header/__logo/header__logo.css");
@@ -44,3 +45,15 @@
 @import url("./blocks/popup/__image/popup__image.css");
 @import url("./blocks/popup/__image-caption/popup__image-caption.css");
 @import url("./blocks/popup/_opened/popup_opened.css");
+@import url("./blocks/form/form.css");
+@import url("./blocks/form/_type/form_type_auth.css");
+@import url("./blocks/form/__title/form__title.css");
+@import url("./blocks/form/__title/_type/form__title_type_auth.css");
+@import url("./blocks/form/__input-container/form__input-container.css");
+@import url("./blocks/form/__input/form__input.css");
+@import url("blocks/form/__input/_type/form__input_type_auth.css");
+@import url("./blocks/form/__input/_empty/form__input_empty.css");
+@import url("./blocks/form/__input/_invalid/form__input_invalid.css");
+@import url("./blocks/form/__input-error/form__input-error.css");
+@import url("./blocks/form/__submit-button/form__submit-button.css");
+@import url("./blocks/form/__submit-button/_type/form__submit-button_type_auth.css");

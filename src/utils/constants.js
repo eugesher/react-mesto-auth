@@ -20,6 +20,7 @@ export const popupContents = {
     emailPlaceholder: "Email",
     passwordPlaceholder: "Пароль",
     alreadyRegisteredLink: "Уже зарегистрированы? Войти",
+    submitLabel: "Зарегистрироваться",
   },
   headerLink: {
     login: "Войти",
