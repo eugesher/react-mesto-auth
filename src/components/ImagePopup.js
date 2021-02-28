@@ -30,7 +30,7 @@ export default function ImagePopup({ card, onClose }) {
   return (
     <div
       className={classNames("popup", { popup_opened: isOpen })}
-      onClick={(event) => handlePopupOverlayClick(event, onClose)}
+      onMouseDown={(event) => handlePopupOverlayClick(event, onClose)}
     >
       <div className="popup__image-container">
         <img src={link} alt={name} className="popup__image" />

@@ -32,7 +32,7 @@ export default function PopupWithForm({ children, name, title, submitButtonLabel
   return (
     <div
       className={classNames("popup", { popup_opened: isOpen })}
-      onClick={(event) => handlePopupOverlayClick(event, onClose)}
+      onMouseDown={(event) => handlePopupOverlayClick(event, onClose)}
     >
       <form name={name} noValidate className="form" onSubmit={onSubmit}>
         <h2 className="form__title">{title}</h2>
