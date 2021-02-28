@@ -52,7 +52,6 @@
 @import url("./blocks/form/__input-container/form__input-container.css");
 @import url("./blocks/form/__input/form__input.css");
 @import url("blocks/form/__input/_type/form__input_type_auth.css");
-@import url("./blocks/form/__input/_empty/form__input_empty.css");
 @import url("./blocks/form/__input/_invalid/form__input_invalid.css");
 @import url("./blocks/form/__input-error/form__input-error.css");
 @import url("./blocks/form/__submit-button/form__submit-button.css");
