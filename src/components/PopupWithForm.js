@@ -31,13 +31,13 @@ export default function PopupWithForm({ children, name, title, submitButtonLabel
 
   return (
     <div
-      className={classNames("popup", `popup_type_${name}`, { popup_opened: isOpen })}
+      className={classNames("popup", { popup_opened: isOpen })}
       onClick={(event) => handlePopupOverlayClick(event, onClose)}
     >
-      <form name={name} noValidate className="popup__content" onSubmit={onSubmit}>
-        <h2 className="popup__title">{title}</h2>
+      <form name={name} noValidate className="form" onSubmit={onSubmit}>
+        <h2 className="form__title">{title}</h2>
         {children}
-        <button type="submit" className="popup__submit-button">
+        <button type="submit" className="form__submit-button">
           {submitButtonLabel}
         </button>
         <button type="button" className="popup__close-button" onClick={onClose}>
