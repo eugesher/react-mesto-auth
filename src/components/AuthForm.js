@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function AuthForm({ children, optLink, name, title, submitButtonLabel }) {
+export default function AuthForm({ children, name, title, submitButtonLabel, optLink }) {
   AuthForm.propTypes = {
     children: PropTypes.node,
     optLink: PropTypes.node,
@@ -20,8 +20,9 @@ export default function AuthForm({ children, optLink, name, title, submitButtonL
         <button type="submit" className="form__submit-button form__submit-button_type_auth">
           {submitButtonLabel}
         </button>
-        <div className="form__opt-link-container">{optLink}</div>
+        <div className="form__opt-link-container">{!!optLink && optLink}</div>
       </div>
     </form>
   );
 }
+// todo: add mobile design
