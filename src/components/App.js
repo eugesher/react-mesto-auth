@@ -11,6 +11,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import { textContents } from "../utils/constants";
 import Register from "./Register";
 import classNames from "classnames";
+import Login from "./Login";
 
 export default function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -145,7 +146,8 @@ export default function App() {
           {/*  onCardLike={handleCardLike}*/}
           {/*  onCardDelete={handleCardDelete}*/}
           {/*/>*/}
-          <Register />
+          {/*<Register />*/}
+          <Login />
           {loggedIn && <Footer />}
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}

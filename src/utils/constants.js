@@ -20,7 +20,8 @@ export const textContents = {
     emailPlaceholder: "Email",
     passwordPlaceholder: "Пароль",
     alreadyRegisteredLink: "Уже зарегистрированы? Войти",
-    submitLabel: "Зарегистрироваться",
+    submitRegisterLabel: "Зарегистрироваться",
+    submitLoginLabel: "Войти",
   },
   headerLink: {
     login: "Войти",
