@@ -132,7 +132,6 @@ export default function App() {
 
   return (
     <div className={classNames("page", { page_state_unsigned: !loggedIn })}>
-      {/*todo: refactor classnames*/}
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page__content">
           <Header />
