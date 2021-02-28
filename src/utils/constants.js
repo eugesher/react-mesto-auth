@@ -1,4 +1,4 @@
-export const popupContents = {
+export const textContents = {
   editProfile: {
     title: "Редактировать профиль",
     submitLabel: "Сохранить",
@@ -27,5 +27,3 @@ export const popupContents = {
     register: "Регистрация",
   },
 };
-
-// todo: rename

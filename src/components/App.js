@@ -8,7 +8,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
-import { popupContents } from "../utils/constants";
+import { textContents } from "../utils/constants";
 import Register from "./Register";
 import classNames from "classnames";
 
@@ -152,19 +152,19 @@ export default function App() {
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
             onUpdateAvatar={handleUpdateAvatar}
-            content={popupContents.editAvatar}
+            content={textContents.editAvatar}
           />
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
             onUpdateUser={handleUpdateUser}
-            content={popupContents.editProfile}
+            content={textContents.editProfile}
           />
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
             onAddPlace={handleAddPlace}
-            content={popupContents.addPlace}
+            content={textContents.addPlace}
           />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         </div>
