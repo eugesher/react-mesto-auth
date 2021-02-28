@@ -2,3 +2,8 @@
   color: #000;
   background-color: #fff;
 }
+
+.form__submit-button_type_auth:hover {
+  cursor: pointer;
+  background-color: #ffffffd9;
+}

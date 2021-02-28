@@ -146,8 +146,8 @@ export default function App() {
           {/*  onCardLike={handleCardLike}*/}
           {/*  onCardDelete={handleCardDelete}*/}
           {/*/>*/}
-          {/*<Register />*/}
-          <Login />
+          <Register />
+          {/*<Login />*/}
           {loggedIn && <Footer />}
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}

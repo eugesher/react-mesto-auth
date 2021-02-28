@@ -14,6 +14,7 @@ export default function Register() {
             type="email"
             placeholder={textContents.auth.emailPlaceholder}
             required
+            autoFocus={true}
             className="form__input form__input_type_auth"
           />
         </label>
