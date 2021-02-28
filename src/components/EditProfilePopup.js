@@ -39,7 +39,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser, conten
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label className="popup__input-container">
+      <label className="form__input-container">
         <input
           id="user-name"
           name="name"
@@ -47,13 +47,13 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser, conten
           minLength="2"
           maxLength="40"
           required
-          className="popup__input popup__input_type_profile-name"
+          className="form__input"
           value={formValues.name || ""}
           onChange={handleInputChange}
         />
-        <span className="user-name-error popup__input-error" />
+        <span className="user-name-error form__input-error" />
       </label>
-      <label className="popup__input-container">
+      <label className="form__input-container">
         <input
           id="user-about"
           name="about"
@@ -61,11 +61,11 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser, conten
           minLength="2"
           maxLength="200"
           required
-          className="popup__input popup__input_type_profile-about"
+          className="form__input form__input_type_profile-about"
           value={formValues.about || ""}
           onChange={handleInputChange}
         />
-        <span className="user-about-error popup__input-error" />
+        <span className="user-about-error form__input-error" />
       </label>
     </PopupWithForm>
   );

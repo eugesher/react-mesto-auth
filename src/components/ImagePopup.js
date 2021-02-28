@@ -2,6 +2,7 @@ import React from "react";
 import crossButtonIcon from "../images/cross.svg";
 import { handlePopupOverlayClick } from "../utils/utils";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 export default function ImagePopup({ card, onClose }) {
   ImagePopup.propTypes = {
@@ -28,10 +29,10 @@ export default function ImagePopup({ card, onClose }) {
 
   return (
     <div
-      className={`popup popup_type_photo-view ${isOpen && "popup_opened"}`}
+      className={classNames("popup", { popup_opened: isOpen })}
       onClick={(event) => handlePopupOverlayClick(event, onClose)}
     >
-      <div className="popup__content popup__content_type_image">
+      <div className="popup__image-container">
         <img src={link} alt={name} className="popup__image" />
         <p className="popup__image-caption">{name}</p>
         <button type="button" className="popup__close-button" onClick={onClose}>

@@ -37,7 +37,7 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace, content }) 
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label className="popup__input-container">
+      <label className="form__input-container">
         <input
           ref={nameInput}
           id="place-name"
@@ -46,22 +46,22 @@ export default function AddPlacePopup({ isOpen, onClose, onAddPlace, content }) 
           minLength="2"
           maxLength="30"
           required
-          className="popup__input popup__input_type_place-name"
+          className="form__input"
           placeholder={content.namePlaceholder}
         />
-        <span className="place-name-error popup__input-error" />
+        <span className="place-name-error form__input-error" />
       </label>
-      <label className="popup__input-container">
+      <label className="form__input-container">
         <input
           ref={linkInput}
           id="place-link"
           name="link"
           type="url"
           required
-          className="popup__input popup__input_type_place-link"
+          className="form__input"
           placeholder={content.linkPlaceholder}
         />
-        <span className="place-link-error popup__input-error" />
+        <span className="place-link-error form__input-error" />
       </label>
     </PopupWithForm>
   );

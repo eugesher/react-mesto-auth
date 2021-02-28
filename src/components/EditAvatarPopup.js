@@ -30,17 +30,17 @@ export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, conte
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label className="popup__input-container">
+      <label className="form__input-container">
         <input
           ref={linkInput}
           id="avatar-link"
           name="avatar"
           type="url"
           required
-          className="popup__input popup__input_type_avatar-link"
+          className="form__input"
           placeholder={content.placeholder}
         />
-        <span className="avatar-link-error popup__input-error" />
+        <span className="avatar-link-error form__input-error" />
       </label>
     </PopupWithForm>
   );
