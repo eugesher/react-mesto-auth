@@ -9,6 +9,8 @@ import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import { popupContents } from "../utils/constants";
+import Register from "./Register";
+import classNames from "classnames";
 
 export default function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -129,21 +131,23 @@ export default function App() {
   }, []);
 
   return (
-    <div className="page">
+    <div className={classNames("page", { page_state_unsigned: !loggedIn })}>
+      {/*todo: refactor classnames*/}
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page__content">
           <Header />
-          <Main
-            onEditAvatar={handleEditAvatarClick}
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            selectedCard={selectedCard}
-            onCardClick={(imageLink) => handleCardClick(imageLink)}
-            cards={cards}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
-          />
-          <Footer />
+          {/*<Main*/}
+          {/*  onEditAvatar={handleEditAvatarClick}*/}
+          {/*  onEditProfile={handleEditProfileClick}*/}
+          {/*  onAddPlace={handleAddPlaceClick}*/}
+          {/*  selectedCard={selectedCard}*/}
+          {/*  onCardClick={(imageLink) => handleCardClick(imageLink)}*/}
+          {/*  cards={cards}*/}
+          {/*  onCardLike={handleCardLike}*/}
+          {/*  onCardDelete={handleCardDelete}*/}
+          {/*/>*/}
+          <Register />
+          {loggedIn && <Footer />}
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}

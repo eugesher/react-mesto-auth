@@ -3,3 +3,7 @@
   background-color: #000;
   border-bottom: 2px solid #ccc;
 }
+
+.form__input_type_auth::placeholder {
+  color: #ccc;
+}
