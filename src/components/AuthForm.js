@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Route } from "react-router-dom";
 
 export default function AuthForm({ children, name, title, submitButtonLabel, optLink }) {
   AuthForm.propTypes = {
@@ -20,7 +21,9 @@ export default function AuthForm({ children, name, title, submitButtonLabel, opt
         <button type="submit" className="form__submit-button form__submit-button_type_auth">
           {submitButtonLabel}
         </button>
-        <div className="form__opt-link-container">{!!optLink && optLink}</div>
+        <div className="form__opt-link-container">
+          <Route path="/sign-up">{optLink}</Route>
+        </div>
       </div>
     </form>
   );

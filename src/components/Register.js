@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import AuthForm from "./AuthForm";
 
 export default function Register() {
-  const optLink = <Link className="form__opt-link">{textContents.auth.alreadyRegisteredLink}</Link>;
+  const optLink = (
+    <Link to="/sign-in" className="form__opt-link">
+      {textContents.auth.alreadyRegisteredLink}
+    </Link>
+  );
   const content = textContents.auth;
 
   return (
