@@ -12,6 +12,7 @@ import { textContents } from "../utils/constants";
 import Register from "./Register";
 import classNames from "classnames";
 import Login from "./Login";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 export default function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -136,18 +137,30 @@ export default function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page__content">
           <Header />
-          {/*<Main*/}
-          {/*  onEditAvatar={handleEditAvatarClick}*/}
-          {/*  onEditProfile={handleEditProfileClick}*/}
-          {/*  onAddPlace={handleAddPlaceClick}*/}
-          {/*  selectedCard={selectedCard}*/}
-          {/*  onCardClick={(imageLink) => handleCardClick(imageLink)}*/}
-          {/*  cards={cards}*/}
-          {/*  onCardLike={handleCardLike}*/}
-          {/*  onCardDelete={handleCardDelete}*/}
-          {/*/>*/}
-          <Register />
-          {/*<Login />*/}
+          <Switch>
+            <Route path="/sign-up">
+              <Register />
+            </Route>
+            <Route path="/sign-in">
+              <Login />
+            </Route>
+            <Route exact path="/">
+              {loggedIn ? (
+                <Main
+                  onEditAvatar={handleEditAvatarClick}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  selectedCard={selectedCard}
+                  onCardClick={(imageLink) => handleCardClick(imageLink)}
+                  cards={cards}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                />
+              ) : (
+                <Redirect to="/sign-in" />
+              )}
+            </Route>
+          </Switch>
           {loggedIn && <Footer />}
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
