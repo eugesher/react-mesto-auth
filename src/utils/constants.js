@@ -24,6 +24,7 @@ export const textContents = {
     submitLoginLabel: "Войти",
   },
   headerLink: {
+    logout: "Выйти",
     login: "Войти",
     register: "Регистрация",
   },

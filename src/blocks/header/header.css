@@ -1,8 +1,12 @@
 .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 68.9%;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-  padding-bottom: 36px;
+  padding-bottom: 39px;
 }
 
 @media screen and (max-width: 1279px) {
