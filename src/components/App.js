@@ -13,6 +13,7 @@ import Register from "./Register";
 import classNames from "classnames";
 import Login from "./Login";
 import { Redirect, Route, Switch } from "react-router-dom";
+import InfoTooltip from "./InfoTooltip";
 
 export default function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -23,7 +24,7 @@ export default function App() {
   const [cards, setCards] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState("");
-  const [isInfoTooltipOpen] = React.useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(true);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -42,9 +43,12 @@ export default function App() {
   }
 
   function closeAllPopups() {
-    [setIsEditAvatarPopupOpen, setIsEditProfilePopupOpen, setIsAddPlacePopupOpen].forEach((setState) =>
-      setState(false)
-    );
+    [
+      setIsEditAvatarPopupOpen,
+      setIsEditProfilePopupOpen,
+      setIsAddPlacePopupOpen,
+      setIsInfoTooltipOpen,
+    ].forEach((setState) => setState(false));
     setSelectedCard({});
   }
 
@@ -183,6 +187,7 @@ export default function App() {
             content={textContents.addPlace}
           />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+          <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} />
         </div>
       </CurrentUserContext.Provider>
     </div>

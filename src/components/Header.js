@@ -10,6 +10,7 @@ export default function Header() {
         <Route path="/sign-in">
           <Link to="/sign-up" className="header__link">
             {textContents.headerLink.register}
+            {/*todo: refactor*/}
           </Link>
         </Route>
         <Route path="/sign-up">

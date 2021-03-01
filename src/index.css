@@ -50,3 +50,5 @@
 @import url("./blocks/form/__submit-button/_type/form__submit-button_type_auth.css");
 @import url("./blocks/form/__opt-link-container/form__opt-link-container.css");
 @import url("./blocks/form/__opt-link/form__opt-link.css");
+@import url("./blocks/tooltip/tooltip.css");
+@import url("./blocks/tooltip/__message/tooltip__meassage.css");

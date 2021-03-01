@@ -28,4 +28,14 @@ export const textContents = {
     login: "Войти",
     register: "Регистрация",
   },
+  infoTooltip: {
+    imageAlts: {
+      success: "успех",
+      fail: "провал",
+    },
+    messages: {
+      success: "Вы успешно зарегистрировались!",
+      fail: "Что-то пошло не так! Попробуйте ещё раз.",
+    },
+  },
 };
