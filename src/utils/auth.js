@@ -36,8 +36,5 @@ export const checkToken = (token) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => data)
-    .catch((e) => {
-      console.error(e);
-    });
+    .then((data) => data);
 };
