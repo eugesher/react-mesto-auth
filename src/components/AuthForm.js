@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
 
-export default function AuthForm({ children, name, title, submitButtonLabel, optLink }) {
+export default function AuthForm({ children, name, title, submitButtonLabel, formFooterLink }) {
   AuthForm.propTypes = {
     children: PropTypes.node,
-    optLink: PropTypes.node,
+    formFooterLink: PropTypes.node,
     name: PropTypes.string,
     title: PropTypes.string,
     submitButtonLabel: PropTypes.string,
@@ -21,8 +21,8 @@ export default function AuthForm({ children, name, title, submitButtonLabel, opt
         <button type="submit" className="form__submit-button form__submit-button_type_auth">
           {submitButtonLabel}
         </button>
-        <div className="form__opt-link-container">
-          <Route path="/sign-up">{optLink}</Route>
+        <div className="form__footer">
+          <Route path="/sign-up">{formFooterLink}</Route>
         </div>
       </div>
     </form>

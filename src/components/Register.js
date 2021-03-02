@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AuthForm from "./AuthForm";
 
 export default function Register() {
-  const optLink = (
+  const formFooterLink = (
     <Link to="/sign-in" className="form__opt-link">
       {textContents.auth.alreadyRegisteredLink}
     </Link>
@@ -16,7 +16,7 @@ export default function Register() {
       name="register"
       title={content.titleRegister}
       submitButtonLabel={content.submitRegisterLabel}
-      optLink={optLink}
+      formFooterLink={formFooterLink}
     >
       <label className="form__input-container">
         <input

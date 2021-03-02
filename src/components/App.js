@@ -24,7 +24,7 @@ export default function App() {
   const [cards, setCards] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState("");
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(true);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
