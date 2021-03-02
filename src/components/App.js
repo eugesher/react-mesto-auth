@@ -146,6 +146,12 @@ function App({ history }) {
       });
   }
 
+  function handleLogout() {
+    localStorage.removeItem("jwt");
+    setLoggedIn(false);
+    setEmail("");
+  }
+
   function handleCheckToken() {
     if (localStorage.getItem("jwt")) {
       const token = localStorage.getItem("jwt");
@@ -194,7 +200,7 @@ function App({ history }) {
     <div className={classNames("page", { page_state_unsigned: !loggedIn })}>
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page__content">
-          <Header />
+          <Header onLogout={handleLogout} />
           <Switch>
             <ProtectedRoute
               exact
