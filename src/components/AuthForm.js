@@ -29,4 +29,3 @@ export default function AuthForm({ children, name, title, submitButtonLabel, for
     </form>
   );
 }
-// todo: add mobile design

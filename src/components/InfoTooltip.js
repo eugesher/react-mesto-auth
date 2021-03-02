@@ -5,10 +5,10 @@ import crossButtonIcon from "../images/cross.svg";
 import { textContents } from "../utils/constants";
 import PropTypes from "prop-types";
 
-export default function InfoTooltip({ image, caption, isOpen, onClose }) {
+export default function InfoTooltip({ image, message, isOpen, onClose }) {
   InfoTooltip.propTypes = {
     image: PropTypes.string,
-    caption: PropTypes.string,
+    message: PropTypes.string,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
   };
@@ -36,7 +36,7 @@ export default function InfoTooltip({ image, caption, isOpen, onClose }) {
     >
       <div className="tooltip">
         <img src={image} alt={imageAlts.success} />
-        <p className="tooltip__message">{caption}</p>
+        <p className="tooltip__message">{message}</p>
         <button type="button" className="popup__close-button" onClick={onClose}>
           <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image" />
         </button>

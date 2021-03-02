@@ -28,7 +28,7 @@ function App({ history }) {
   const [cards, setCards] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState("");
-  const [infoTooltip, setInfoToolTip] = React.useState({ image: "", caption: "", isOpen: false });
+  const [infoTooltip, setInfoToolTip] = React.useState({ image: "", message: "", isOpen: false });
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -122,9 +122,9 @@ function App({ history }) {
     register(email, password)
       .then(({ data }) => {
         if (data) {
-          setInfoToolTip({ image: successImage, caption: textContents.infoTooltip.messages.success, isOpen: true });
+          setInfoToolTip({ image: successImage, message: textContents.infoTooltip.messages.success, isOpen: true });
         } else {
-          setInfoToolTip({ image: failImage, caption: textContents.infoTooltip.messages.fail, isOpen: true });
+          setInfoToolTip({ image: failImage, message: textContents.infoTooltip.messages.fail, isOpen: true });
         }
       })
       .then(() => history.push("/sign-in"))
@@ -248,7 +248,7 @@ function App({ history }) {
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
           <InfoTooltip
             image={infoTooltip.image}
-            caption={infoTooltip.caption}
+            message={infoTooltip.message}
             isOpen={infoTooltip.isOpen}
             onClose={closeAllPopups}
           />
