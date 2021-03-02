@@ -200,7 +200,7 @@ function App({ history }) {
     <div className={classNames("page", { page_state_unsigned: !loggedIn })}>
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page__content">
-          <Header onLogout={handleLogout} />
+          <Header email={email} onLogout={handleLogout} />
           <Switch>
             <ProtectedRoute
               exact
