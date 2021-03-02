@@ -15,7 +15,7 @@ import Login from "./Login";
 import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import { register } from "../utils/auth";
+import { authorize, register } from "../utils/auth";
 import successImage from "../images/success.svg";
 import failImage from "../images/fail.svg";
 
@@ -119,16 +119,32 @@ function App({ history }) {
   }
 
   function handleRegister(email, password) {
-    register(email, password).then((response) => {
-      if (response.data) {
-        setInfoToolTip(
-          { image: successImage, caption: textContents.infoTooltip.messages.success, isOpen: true },
-          history.push("/sign-in")
-        );
-      } else {
-        setInfoToolTip({ image: failImage, caption: textContents.infoTooltip.messages.fail, isOpen: true });
-      }
-    });
+    register(email, password)
+      .then((data) => {
+        if (data.data) {
+          setInfoToolTip({ image: successImage, caption: textContents.infoTooltip.messages.success, isOpen: true });
+        } else {
+          setInfoToolTip({ image: failImage, caption: textContents.infoTooltip.messages.fail, isOpen: true });
+        }
+      })
+      .then(() => history.push("/sign-in"))
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
+  function handleLogin(email, password) {
+    authorize(email, password)
+      .then((data) => {
+        console.log(data);
+        if (data.token) {
+          setLoggedIn(true);
+        }
+      })
+      .then(() => history.push("/"))
+      .catch((e) => {
+        console.error(e);
+      });
   }
 
   React.useEffect(() => {
@@ -177,7 +193,7 @@ function App({ history }) {
               <Register onRegister={handleRegister} />
             </Route>
             <Route path="/sign-in">
-              <Login />
+              <Login onLogin={handleLogin} />
             </Route>
             <Route exact path="/">
               {!loggedIn && <Redirect to="/sign-in" />}
