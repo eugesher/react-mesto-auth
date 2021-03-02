@@ -196,6 +196,7 @@ function App({ history }) {
 
   React.useEffect(() => {
     handleCheckToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
