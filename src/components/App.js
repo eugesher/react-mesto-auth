@@ -14,6 +14,7 @@ import classNames from "classnames";
 import Login from "./Login";
 import { Redirect, Route, Switch } from "react-router-dom";
 import InfoTooltip from "./InfoTooltip";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -22,7 +23,7 @@ export default function App() {
   const [selectedCard, setSelectedCard] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const [email, setEmail] = React.useState("");
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
 
@@ -144,6 +145,20 @@ export default function App() {
         <div className="page__content">
           <Header />
           <Switch>
+            <ProtectedRoute
+              exact
+              path="/"
+              component={Main}
+              loggedIn={loggedIn}
+              onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              selectedCard={selectedCard}
+              onCardClick={(imageLink) => handleCardClick(imageLink)}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+            />
             <Route path="/sign-up">
               <Register />
             </Route>
@@ -151,20 +166,7 @@ export default function App() {
               <Login />
             </Route>
             <Route exact path="/">
-              {loggedIn ? (
-                <Main
-                  onEditAvatar={handleEditAvatarClick}
-                  onEditProfile={handleEditProfileClick}
-                  onAddPlace={handleAddPlaceClick}
-                  selectedCard={selectedCard}
-                  onCardClick={(imageLink) => handleCardClick(imageLink)}
-                  cards={cards}
-                  onCardLike={handleCardLike}
-                  onCardDelete={handleCardDelete}
-                />
-              ) : (
-                <Redirect to="/sign-in" />
-              )}
+              {!loggedIn && <Redirect to="/sign-in" />}
             </Route>
           </Switch>
           {loggedIn && <Footer />}
