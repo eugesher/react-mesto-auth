@@ -7,10 +7,13 @@ export function register(email, password) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify(email, password),
   })
     .then((response) => response.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch((e) => {
+      console.error(e);
+    });
 }
 
 export function authorize(email, password) {
@@ -28,6 +31,9 @@ export function authorize(email, password) {
         localStorage.setItem("jwt", data.jwt);
         return data;
       }
+    })
+    .catch((e) => {
+      console.error(e);
     });
 }
 
@@ -41,5 +47,8 @@ export const checkToken = (token) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch((e) => {
+      console.error(e);
+    });
 };

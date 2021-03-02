@@ -1,19 +1,19 @@
 import React from "react";
-import successImage from "../images/success.svg";
 import classNames from "classnames";
 import { handlePopupOverlayClick } from "../utils/utils";
 import crossButtonIcon from "../images/cross.svg";
 import { textContents } from "../utils/constants";
 import PropTypes from "prop-types";
 
-export default function InfoTooltip({ isOpen, onClose }) {
+export default function InfoTooltip({ image, caption, isOpen, onClose }) {
   InfoTooltip.propTypes = {
+    image: PropTypes.string,
+    caption: PropTypes.string,
     isOpen: PropTypes.bool,
     onClose: PropTypes.func,
   };
 
   const imageAlts = textContents.infoTooltip.imageAlts;
-  const messages = textContents.infoTooltip.messages;
 
   React.useEffect(() => {
     if (isOpen) {
@@ -35,8 +35,8 @@ export default function InfoTooltip({ isOpen, onClose }) {
       onMouseDown={(event) => handlePopupOverlayClick(event, onClose)}
     >
       <div className="tooltip">
-        <img src={successImage} alt={imageAlts.success} />
-        <p className="tooltip__message">{messages.success}</p>
+        <img src={image} alt={imageAlts.success} />
+        <p className="tooltip__message">{caption}</p>
         <button type="button" className="popup__close-button" onClick={onClose}>
           <img src={crossButtonIcon} alt="Закрыть" className="popup__close-button-image" />
         </button>

@@ -12,20 +12,23 @@ import { textContents } from "../utils/constants";
 import Register from "./Register";
 import classNames from "classnames";
 import Login from "./Login";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
+import { register } from "../utils/auth";
+import successImage from "../images/success.svg";
+import failImage from "../images/fail.svg";
 
-export default function App() {
+function App({ history }) {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState("");
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
+  const [infoTooltip, setInfoToolTip] = React.useState({ image: "", caption: "", isOpen: false });
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -44,13 +47,11 @@ export default function App() {
   }
 
   function closeAllPopups() {
-    [
-      setIsEditAvatarPopupOpen,
-      setIsEditProfilePopupOpen,
-      setIsAddPlacePopupOpen,
-      setIsInfoTooltipOpen,
-    ].forEach((setState) => setState(false));
+    [setIsEditAvatarPopupOpen, setIsEditProfilePopupOpen, setIsAddPlacePopupOpen].forEach((setState) =>
+      setState(false)
+    );
     setSelectedCard({});
+    setInfoToolTip({ isOpen: false });
   }
 
   function handleUpdateUser(values) {
@@ -117,6 +118,19 @@ export default function App() {
       });
   }
 
+  function handleRegister(email, password) {
+    register(email, password).then((response) => {
+      if (response.data) {
+        setInfoToolTip(
+          { image: successImage, caption: textContents.infoTooltip.messages.success, isOpen: true },
+          history.push("/sign-in")
+        );
+      } else {
+        setInfoToolTip({ image: failImage, caption: textContents.infoTooltip.messages.fail, isOpen: true });
+      }
+    });
+  }
+
   React.useEffect(() => {
     api
       .getUserInfo()
@@ -160,7 +174,7 @@ export default function App() {
               onCardDelete={handleCardDelete}
             />
             <Route path="/sign-up">
-              <Register />
+              <Register onRegister={handleRegister} />
             </Route>
             <Route path="/sign-in">
               <Login />
@@ -189,9 +203,16 @@ export default function App() {
             content={textContents.addPlace}
           />
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-          <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} />
+          <InfoTooltip
+            image={infoTooltip.image}
+            caption={infoTooltip.caption}
+            isOpen={infoTooltip.isOpen}
+            onClose={closeAllPopups}
+          />
         </div>
       </CurrentUserContext.Provider>
     </div>
   );
 }
+
+export default withRouter(App);
