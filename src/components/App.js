@@ -15,7 +15,7 @@ import Login from "./Login";
 import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import { authorize, register } from "../utils/auth";
+import { authorize, register, checkToken } from "../utils/auth";
 import successImage from "../images/success.svg";
 import failImage from "../images/fail.svg";
 
@@ -120,8 +120,8 @@ function App({ history }) {
 
   function handleRegister(email, password) {
     register(email, password)
-      .then((data) => {
-        if (data.data) {
+      .then(({ data }) => {
+        if (data) {
           setInfoToolTip({ image: successImage, caption: textContents.infoTooltip.messages.success, isOpen: true });
         } else {
           setInfoToolTip({ image: failImage, caption: textContents.infoTooltip.messages.fail, isOpen: true });
@@ -135,9 +135,8 @@ function App({ history }) {
 
   function handleLogin(email, password) {
     authorize(email, password)
-      .then((data) => {
-        console.log(data);
-        if (data.token) {
+      .then(({ token }) => {
+        if (token) {
           setLoggedIn(true);
         }
       })
@@ -145,6 +144,24 @@ function App({ history }) {
       .catch((e) => {
         console.error(e);
       });
+  }
+
+  function handleCheckToken() {
+    if (localStorage.getItem("jwt")) {
+      const token = localStorage.getItem("jwt");
+      checkToken(token)
+        .then(({ data }) => {
+          if (data.email) {
+            setLoggedIn(true);
+            setEmail(data.email);
+          }
+        })
+        .then(history.push("/"))
+        .catch((e) => {
+          history.push("/sign-in");
+          console.error(e);
+        });
+    }
   }
 
   React.useEffect(() => {
@@ -167,6 +184,10 @@ function App({ history }) {
       .catch((e) => {
         console.error(e);
       });
+  }, []);
+
+  React.useEffect(() => {
+    handleCheckToken();
   }, []);
 
   return (

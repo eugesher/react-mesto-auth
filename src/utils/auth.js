@@ -20,11 +20,10 @@ export function authorize(email, password) {
   })
     .then((response) => response.json())
     .then((data) => {
-      return data;
-      // if (data.user) {
-      //   localStorage.setItem("jwt", data.jwt);
-      //   return data;
-      // }
+      if (data.token) {
+        localStorage.setItem("jwt", data.token);
+        return data;
+      }
     });
 }
 
