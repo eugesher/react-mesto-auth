@@ -31,7 +31,7 @@ export default function Header({ email, onLogout }) {
           </Route>
           <Route exact path="/">
             <p className="header__email">{email}</p>
-            <Link to="/sign-in" onClick={logout} className="header__link">
+            <Link to="/sign-in" onClick={logout} className="header__link header__link_type_logout">
               {textContents.headerLink.logout}
             </Link>
           </Route>
