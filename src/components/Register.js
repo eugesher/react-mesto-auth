@@ -11,12 +11,12 @@ export default function Register({ onRegister }) {
 
   const [formValues, setFormValues] = React.useState({});
 
+  const content = textContents.auth;
   const formFooterLink = (
     <Link to="/sign-in" className="form__footer-link">
-      {textContents.auth.alreadyRegisteredLink}
+      {content.alreadyRegisteredLink}
     </Link>
   );
-  const content = textContents.auth;
 
   function handleInputChange(event) {
     setFormValues({ ...formValues, [event.target.name]: event.target.value });

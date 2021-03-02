@@ -1,5 +1,5 @@
 import headerLogo from "../images/logo.svg";
-import { Switch, Route, Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import { textContents } from "../utils/constants";
 import PropTypes from "prop-types";
 
@@ -7,6 +7,8 @@ export default function Header({ email, onLogout }) {
   Header.propTypes = {
     onLogout: PropTypes.func,
   };
+
+  const linkContents = textContents.headerLink;
 
   function logout(event) {
     event.preventDefault();
@@ -20,19 +22,18 @@ export default function Header({ email, onLogout }) {
         <Switch>
           <Route path="/sign-in">
             <Link to="/sign-up" className="header__link">
-              {textContents.headerLink.register}
-              {/*todo: refactor*/}
+              {linkContents.register}
             </Link>
           </Route>
           <Route path="/sign-up">
             <Link to="/sign-in" className="header__link">
-              {textContents.headerLink.login}
+              {linkContents.login}
             </Link>
           </Route>
           <Route exact path="/">
             <p className="header__email">{email}</p>
             <Link to="/sign-in" onClick={logout} className="header__link header__link_type_logout">
-              {textContents.headerLink.logout}
+              {linkContents.logout}
             </Link>
           </Route>
         </Switch>

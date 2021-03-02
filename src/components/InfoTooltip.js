@@ -27,7 +27,7 @@ export default function InfoTooltip({ image, message, isOpen, onClose }) {
         document.removeEventListener("keydown", handleEscapeClose);
       };
     }
-  }, [isOpen, onClose]); //todo: DRY
+  }, [isOpen, onClose]);
 
   return (
     <div

@@ -3,19 +3,19 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
-import api from "../utils/api";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
-import { textContents } from "../utils/constants";
 import Register from "./Register";
-import classNames from "classnames";
 import Login from "./Login";
-import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
-import { authorize, register, checkToken } from "../utils/auth";
+import api from "../utils/api";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { textContents } from "../utils/constants";
+import classNames from "classnames";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
+import { authorize, checkToken, register } from "../utils/auth";
 import successImage from "../images/success.svg";
 import failImage from "../images/fail.svg";
 
@@ -29,6 +29,8 @@ function App({ history }) {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [infoTooltip, setInfoToolTip] = React.useState({ image: "", message: "", isOpen: false });
+
+  const tooltipMessages = textContents.infoTooltip.messages;
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -122,9 +124,9 @@ function App({ history }) {
     register(email, password)
       .then(({ data }) => {
         if (data) {
-          setInfoToolTip({ image: successImage, message: textContents.infoTooltip.messages.success, isOpen: true });
+          setInfoToolTip({ image: successImage, message: tooltipMessages.success, isOpen: true });
         } else {
-          setInfoToolTip({ image: failImage, message: textContents.infoTooltip.messages.fail, isOpen: true });
+          setInfoToolTip({ image: failImage, message: tooltipMessages.fail, isOpen: true });
         }
       })
       .then(() => history.push("/sign-in"))
