@@ -1,4 +1,4 @@
-.form__opt-link {
+.form__footer-link {
   display: inline-block;
   width: 100%;
   margin-top: 15px;
@@ -10,6 +10,6 @@
   color: #fff;
 }
 
-.form__opt-link:hover {
+.form__footer-link:hover {
   color: #fff9;
 }

@@ -6,7 +6,7 @@ export default function Login() {
   const content = textContents.auth;
 
   return (
-    <AuthForm name="login" title={content.titleLogin} submitButtonLabel={content.submitLoginLabel} optLink="">
+    <AuthForm name="login" title={content.titleLogin} submitButtonLabel={content.submitLoginLabel} formFooterLink="">
       <label className="form__input-container">
         <input
           id="login-email"
