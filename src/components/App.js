@@ -120,8 +120,8 @@ function App({ history }) {
       });
   }
 
-  function handleRegister(email, password) {
-    register(email, password)
+  function handleRegister({ email, password }) {
+    register({ email, password })
       .then(({ data }) => {
         if (data) {
           setInfoToolTip({ image: successImage, message: tooltipMessages.success, isOpen: true });
@@ -135,10 +135,11 @@ function App({ history }) {
       });
   }
 
-  function handleLogin(email, password) {
-    authorize(email, password)
+  function handleLogin({ email, password }) {
+    authorize({ email, password })
       .then(({ token }) => {
         if (token) {
+          setEmail(email);
           setLoggedIn(true);
         }
       })
