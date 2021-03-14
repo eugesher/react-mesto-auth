@@ -29,4 +29,4 @@ open http://localhost:3000
 Планы по доработке:
 - Разработка мобильной версии приложения
 
-[Ссылка на страницу](https://eugesher.github.io/react-mesto-auth/)
+[Ссылка на страницу](https://react-mesto-auth-coral.vercel.app/)
