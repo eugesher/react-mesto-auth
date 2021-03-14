@@ -17,7 +17,7 @@
 Системные требования:
 - Менеджер пакетов NPM
 
-Использование:
+Сборка и запуск приложения:
 ```shell
 git clone https://github.com/eugesher/react-mesto-auth
 cd react-mesto-auth
