@@ -122,8 +122,9 @@ function App({ history }) {
 
   function handleRegister({ email, password }) {
     register({ email, password })
-      .then(({ data }) => {
-        if (data) {
+      .then(({ _id }) => {
+        console.log(_id);
+        if (_id) {
           setInfoToolTip({ image: successImage, message: tooltipMessages.success, isOpen: true });
         } else {
           setInfoToolTip({ image: failImage, message: tooltipMessages.fail, isOpen: true });
@@ -174,7 +175,7 @@ function App({ history }) {
   }
 
   React.useEffect(() => {
-    api
+    loggedIn && api
       .getUserInfo()
       .then((data) => {
         setCurrentUser(data);
@@ -182,10 +183,10 @@ function App({ history }) {
       .catch((e) => {
         console.error(e);
       });
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
-    api
+    loggedIn && api
       .getInitialCards()
       .then((data) => {
         setCards(data);
@@ -193,7 +194,7 @@ function App({ history }) {
       .catch((e) => {
         console.error(e);
       });
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     handleCheckToken();
