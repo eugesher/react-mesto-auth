@@ -95,7 +95,6 @@ function App({ history }) {
   function handleCardLike(card) {
     function changeLikeCardStatus() {
       const isLiked = card.likes.some((l) => l === currentUser._id);
-      console.log(isLiked);
       return isLiked ? api.deleteCardLike(card._id) : api.putCardLike(card._id);
     }
 
@@ -175,25 +174,27 @@ function App({ history }) {
   }
 
   React.useEffect(() => {
-    loggedIn && api
-      .getUserInfo()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    loggedIn &&
+      api
+        .getUserInfo()
+        .then((data) => {
+          setCurrentUser(data);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
   }, [loggedIn]);
 
   React.useEffect(() => {
-    loggedIn && api
-      .getInitialCards()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    loggedIn &&
+      api
+        .getInitialCards()
+        .then((data) => {
+          setCards(data);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
   }, [loggedIn]);
 
   React.useEffect(() => {

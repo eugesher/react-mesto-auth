@@ -16,8 +16,6 @@ export default function Card({ source, onClick, onCardLike, onCardDelete }) {
   const { name, link, likes } = source;
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = currentUser._id === source.owner;
-  console.log(currentUser);
-  console.log(source);
   const isLiked = likes.some((l) => l === currentUser._id);
 
   function handleImageClick() {

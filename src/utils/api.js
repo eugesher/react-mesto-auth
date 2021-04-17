@@ -9,19 +9,26 @@ class Api {
     else return Promise.reject(`Ошибка: ${response.status}`);
   }
 
+  _setHeaders() {
+    this._headers.authorization = `Bearer ${localStorage.getItem("jwt")}`;
+  }
+
   getUserInfo() {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
     }).then(this._getData);
   }
 
   getInitialCards() {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     }).then(this._getData);
   }
 
   patchUserInfo({ name, about }) {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -30,6 +37,7 @@ class Api {
   }
 
   postCard({ name, link }) {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -38,6 +46,7 @@ class Api {
   }
 
   deleteCard(cardId) {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
@@ -45,6 +54,7 @@ class Api {
   }
 
   putCardLike(cardId) {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
@@ -52,6 +62,7 @@ class Api {
   }
 
   deleteCardLike(cardId) {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
@@ -59,6 +70,7 @@ class Api {
   }
 
   patchUserAvatar({ avatar }) {
+    this._setHeaders();
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -70,7 +82,6 @@ class Api {
 const api = new Api({
   baseUrl: "http://localhost:3000",
   headers: {
-    authorization: `Bearer ${localStorage.getItem("jwt")}`,
     "Content-Type": "application/json",
   },
 });
