@@ -94,7 +94,8 @@ function App({ history }) {
 
   function handleCardLike(card) {
     function changeLikeCardStatus() {
-      const isLiked = card.likes.some((l) => l._id === currentUser._id);
+      const isLiked = card.likes.some((l) => l === currentUser._id);
+      console.log(isLiked);
       return isLiked ? api.deleteCardLike(card._id) : api.putCardLike(card._id);
     }
 
