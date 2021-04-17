@@ -123,7 +123,6 @@ function App({ history }) {
   function handleRegister({ email, password }) {
     register({ email, password })
       .then(({ _id }) => {
-        console.log(_id);
         if (_id) {
           setInfoToolTip({ image: successImage, message: tooltipMessages.success, isOpen: true });
         } else {
@@ -140,8 +139,8 @@ function App({ history }) {
     authorize({ email, password })
       .then(({ token }) => {
         if (token) {
-          setEmail(email);
           setLoggedIn(true);
+          setEmail(email);
         }
       })
       .then(() => history.push("/"))
@@ -160,7 +159,7 @@ function App({ history }) {
     if (localStorage.getItem("jwt")) {
       const token = localStorage.getItem("jwt");
       checkToken(token)
-        .then(({ data }) => {
+        .then((data) => {
           if (data.email) {
             setLoggedIn(true);
             setEmail(data.email);
