@@ -1,3 +1,9 @@
 .form__footer {
   height: 112px;
 }
+
+@media screen and (max-width: 639px) {
+  .form__footer {
+    height: 77px;
+  }
+}

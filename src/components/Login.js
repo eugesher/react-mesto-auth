@@ -28,7 +28,7 @@ export default function Login({ onLogin }) {
       formFooterLink=""
       onSubmit={handleSubmit}
     >
-      <label className="form__input-container">
+      <label className="form__input-container form__input-container_type_auth">
         <input
           id="login-email"
           name="email"
@@ -41,7 +41,7 @@ export default function Login({ onLogin }) {
           onChange={handleInputChange}
         />
       </label>
-      <label className="auth__input-container">
+      <label className="auth__input-container form__input-container_type_auth">
         <input
           id="login-password"
           name="password"

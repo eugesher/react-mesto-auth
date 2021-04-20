@@ -13,3 +13,9 @@
 .form__footer-link:hover {
   color: #fff9;
 }
+
+@media screen and (max-width: 639px) {
+  .form__footer-link {
+    margin-top: 20px;
+  }
+}

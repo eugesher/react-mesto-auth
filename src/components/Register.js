@@ -35,7 +35,7 @@ export default function Register({ onRegister }) {
       formFooterLink={formFooterLink}
       onSubmit={handleSubmit}
     >
-      <label className="form__input-container">
+      <label className="form__input-container form__input-container_type_auth">
         <input
           id="register-email"
           name="email"
@@ -48,7 +48,7 @@ export default function Register({ onRegister }) {
           onChange={handleInputChange}
         />
       </label>
-      <label className="auth__input-container">
+      <label className="auth__input-container form__input-container_type_auth">
         <input
           id="register-password"
           name="password"
