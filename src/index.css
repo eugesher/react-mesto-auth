@@ -1,7 +1,7 @@
 @import url("./vendor/normalize.css");
 @import url("./vendor/fonts/fonts.css");
 @import url("./blocks/page/page.css");
-@import url("blocks/page/_state/page_state_unsigned.css");
+@import url("./blocks/page/_state/page_state_unsigned.css");
 @import url("./blocks/page/__content/page__content.css");
 @import url("./blocks/header/header.css");
 @import url("./blocks/header/__logo/header__logo.css");
@@ -33,7 +33,7 @@
 @import url("./blocks/footer/footer.css");
 @import url("./blocks/footer/__copyright/footer__copyright.css");
 @import url("./blocks/popup/popup.css");
-@import url("blocks/popup/__image-container/popup__image-container.css");
+@import url("./blocks/popup/__image-container/popup__image-container.css");
 @import url("./blocks/popup/__close-button/popup__close-button.css");
 @import url("./blocks/popup/__close-button-image/popup__close-button-image.css");
 @import url("./blocks/popup/__image/popup__image.css");
@@ -45,12 +45,19 @@
 @import url("./blocks/form/__title/_type/form__title_type_auth.css");
 @import url("./blocks/form/__input-container/form__input-container.css");
 @import url("./blocks/form/__input/form__input.css");
-@import url("blocks/form/__input/_type/form__input_type_auth.css");
+@import url("./blocks/form/__input/_type/form__input_type_auth.css");
 @import url("./blocks/form/__input/_invalid/form__input_invalid.css");
 @import url("./blocks/form/__input-error/form__input-error.css");
 @import url("./blocks/form/__submit-button/form__submit-button.css");
 @import url("./blocks/form/__submit-button/_type/form__submit-button_type_auth.css");
-@import url("blocks/form/__footer/form__footer.css");
-@import url("blocks/form/__footer-link/form__footer-link.css");
+@import url("./blocks/form/__footer/form__footer.css");
+@import url("./blocks/form/__footer-link/form__footer-link.css");
 @import url("./blocks/tooltip/tooltip.css");
 @import url("./blocks/tooltip/__message/tooltip__meassage.css");
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Inter, Arial, sans-serif;
+  font-style: normal;
+}
