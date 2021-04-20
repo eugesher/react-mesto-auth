@@ -22,7 +22,7 @@ export default function AuthForm({ children, name, title, submitButtonLabel, for
         <button type="submit" className="form__submit-button form__submit-button_type_auth">
           {submitButtonLabel}
         </button>
-        <div className="form__footer">
+        <div>
           <Route path="/sign-up">{formFooterLink}</Route>
         </div>
       </div>

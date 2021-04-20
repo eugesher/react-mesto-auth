@@ -1,8 +1,6 @@
 .form_type_auth {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
   box-sizing: border-box;
   padding-top: 60px;
   padding-bottom: 0;
