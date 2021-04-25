@@ -190,7 +190,7 @@ function App({ history }) {
       api
         .getInitialCards()
         .then((data) => {
-          setCards(data);
+          setCards(data.reverse());
         })
         .catch((e) => {
           console.error(e);
