@@ -1,24 +1,24 @@
 # Mesto Russia
 
-Социальный проект о путешествиях по России.
+Social project about traveling in Russia.
 
-Функциональность:
-- Регистрация и авторизация пользователей
-- Редактирование профиля
-- Добавление и удаление карточек с фотографией
-- Лайк карточек
+Features:
+- Registration and authorization of users
+- Profile editing
+- Add and remove photo cards
+- Like cards 
 
-Стек:
+Stack:
 - React
 - React Router DOM
 - JavaScript
 - CSS
 
-Системные требования:
+System requirements:
 - Node.js
 - NPM
 
-Сборка и запуск приложения:
+Building and running application:
 ```shell
 git clone https://github.com/eugesher/react-mesto-auth
 cd react-mesto-auth
@@ -27,7 +27,4 @@ npm start
 open http://localhost:3000
 ```
 
-Планы по доработке:
-- Разработка мобильной версии приложения
-
-[Ссылка на страницу](https://mesto.eugesher.site/)
+[Link: ](https://mesto.eugesher.site/)
