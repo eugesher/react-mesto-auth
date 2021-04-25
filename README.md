@@ -27,4 +27,4 @@ npm start
 open http://localhost:3000
 ```
 
-[Link: ](https://mesto.eugesher.site/)
+[Link](https://mesto.eugesher.site/)
